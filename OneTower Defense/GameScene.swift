@@ -3,7 +3,7 @@
 //  OneTower Defense
 //
 //  Created by brad huntington on 3/14/16.
-//  Copyright (c) 2016 brad huntington. All rights reserved.
+//  Copyright (c) 2016 brad huntington + Conner Ferguson. All rights reserved.
 //
 
 import SpriteKit
