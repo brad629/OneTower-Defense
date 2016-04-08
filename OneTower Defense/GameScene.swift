@@ -22,7 +22,9 @@ class GameScene: SKScene {
         let turret = SKSpriteNode(imageNamed:"spr_cannon_barrel")
         turret.xScale = 0.5
         turret.yScale = 0.5
-        turret.zPosition=1
+        turret.zPosition=2
+        turret.position = CGPointMake((frame.maxX*0.65),(frame.maxY)-((1/2)*turret.frame.size.height))
+        self.addChild(turret)
         let blueIcon = SKSpriteNode(imageNamed:"spr_cannon_blue")
         blueIcon.xScale = 0.5
         blueIcon.yScale = 0.5
@@ -233,9 +235,9 @@ class GameScene: SKScene {
     
     override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
        /* Called when a touch begins */
-//        
-//        for touch in touches {
-//            let location = touch.locationInNode(self)
+ 
+       for touch in touches {
+            let location = touch.locationInNode(self)
 //            
 //            let sprite = SKSpriteNode(imageNamed:"Spaceship")
 //            
@@ -248,7 +250,7 @@ class GameScene: SKScene {
 //            sprite.runAction(SKAction.repeatActionForever(action))
 //            
 //            self.addChild(sprite)
-//        }
+       }
     }
    
     override func update(currentTime: CFTimeInterval) {
