@@ -11,85 +11,63 @@ import SpriteKit
 class GameScene: SKScene {
     override func didMoveToView(view: SKView) {
         /* Setup your scene here */
-        let sprite = SKSpriteNode(imageNamed:"spr_Asphalt-Stone-Background")
-        sprite.xScale = 1
-        sprite.yScale = 1
-        sprite.zPosition=0
-        sprite.position = CGPointMake(frame.midX,frame.midY)
-        self.addChild(sprite)
-        let sprite2 = SKSpriteNode(imageNamed:"spr_cannon_barrel")
-        sprite2.xScale = 0.5
-        sprite2.yScale = 0.5
-        sprite2.zPosition=1
-        sprite2.position = CGPointMake(frame.midX*1.25,frame.midY)
-        self.addChild(sprite2)
-        let sprite3 = SKSpriteNode(imageNamed:"spr_cannon_blue")
-        sprite3.xScale = 0.5
-        sprite3.yScale = 0.5
-        sprite3.zPosition=1
-        sprite3.position = CGPointMake(frame.midX,frame.midY*1.25)
-        self.addChild(sprite3)
-        let sprite4 = SKSpriteNode(imageNamed:"spr_lives")
-        sprite4.xScale = 0.5
-        sprite4.yScale = 0.5
-        sprite4.zPosition=1
-        sprite4.position = CGPointMake(frame.midX*0.75,frame.midY)
-        self.addChild(sprite4)
-        let sprite5 = SKSpriteNode(imageNamed:"spr_player_celebrate")
-        sprite5.xScale = 0.25
-        sprite5.yScale = 0.25
-        sprite5.zPosition=1
-        sprite5.position = CGPointMake(frame.midX,frame.midY*0.75)
-        self.addChild(sprite5)
-        let sprite6 = SKSpriteNode(imageNamed:"spr_player_die")
-        sprite6.xScale = 0.25
-        sprite6.yScale = 0.25
-        sprite6.zPosition=1
-        sprite6.position = CGPointMake(frame.midX*0.75,frame.midY*0.75)
-        self.addChild(sprite6)
-        let sprite7 = SKSpriteNode(imageNamed:"spr_rock")
-        sprite7.xScale = 0.25
-        sprite7.yScale = 0.25
-        sprite7.zPosition=1
-        sprite7.position = CGPointMake(frame.midX*1.25,frame.midY*1.25)
-        self.addChild(sprite7)
-        let sprite8 = SKSpriteNode(imageNamed:"spr_rocket")
-        sprite8.xScale = 0.25
-        sprite8.yScale = 0.25
-        sprite8.zPosition=1
-        sprite8.position = CGPointMake(frame.midX*0.75,frame.midY*1.25)
-        self.addChild(sprite8)
-        let sprite9 = SKSpriteNode(imageNamed:"spr_sparky_electrocute")
-        sprite9.xScale = 0.25
-        sprite9.yScale = 0.25
-        sprite9.zPosition=1
-        sprite9.position = CGPointMake(frame.midX*1.25,frame.midY*0.75)
-        self.addChild(sprite9)
-        let sprite10 = SKSpriteNode(imageNamed:"spr_sparky_idle")
-        sprite10.xScale = 0.25
-        sprite10.yScale = 0.25
-        sprite10.zPosition=1
-        sprite10.position = CGPointMake(frame.midX,frame.midY)
-        self.addChild(sprite10)
-        let sprite11 = SKSpriteNode(imageNamed:"spr_treasure")
-        sprite11.xScale = 0.25
-        sprite11.yScale = 0.25
-        sprite11.zPosition=1
-        sprite11.position = CGPointMake(frame.midX,frame.midY*1.4)
-        self.addChild(sprite11)
-        let sprite12 = SKSpriteNode(imageNamed:"spr_turtle_spikes")
-        sprite12.xScale = 0.25
-        sprite12.yScale = 0.25
-        sprite12.zPosition=1
-        sprite12.position = CGPointMake(frame.midX*1.25,frame.midY*1.4)
-        self.addChild(sprite12)
-        let sprite13 = SKSpriteNode(imageNamed:"spr_turtle_sneeze")
-        sprite13.xScale = 0.25
-        sprite13.yScale = 0.25
-        sprite13.zPosition=1
-        sprite13.position = CGPointMake(frame.midX*0.75,frame.midY*1.4)
-        self.addChild(sprite13)
+        let background = SKSpriteNode(imageNamed:"spr_Asphalt-Stone-Background")
+        background.xScale = 1
+        background.yScale = 1
+        background.zPosition=0
+        background.position = CGPointMake(frame.midX,frame.midY)
+        self.addChild(background)
         
+        
+        let turret = SKSpriteNode(imageNamed:"spr_cannon_barrel")
+        turret.xScale = 0.5
+        turret.yScale = 0.5
+        turret.zPosition=1
+        let blueIcon = SKSpriteNode(imageNamed:"spr_cannon_blue")
+        blueIcon.xScale = 0.5
+        blueIcon.yScale = 0.5
+        blueIcon.zPosition=1
+        let ballon = SKSpriteNode(imageNamed:"spr_lives")
+        ballon.xScale = 0.5
+        ballon.yScale = 0.5
+        ballon.zPosition=1
+        let bomb = SKSpriteNode(imageNamed:"spr_player_celebrate")
+        bomb.xScale = 0.25
+        bomb.yScale = 0.25
+        bomb.zPosition=1
+        let bombRage = SKSpriteNode(imageNamed:"spr_player_die")
+        bombRage.xScale = 0.25
+        bombRage.yScale = 0.25
+        bombRage.zPosition=1
+        let wall = SKSpriteNode(imageNamed:"spr_rock")
+        wall.xScale = 0.25
+        wall.yScale = 0.25
+        wall.zPosition=1
+        self.addChild(wall)
+        let rocket = SKSpriteNode(imageNamed:"spr_rocket")
+        rocket.xScale = 0.25
+        rocket.yScale = 0.25
+        rocket.zPosition=1
+        let metalRage = SKSpriteNode(imageNamed:"spr_sparky_electrocute")
+        metalRage.xScale = 0.25
+        metalRage.yScale = 0.25
+        metalRage.zPosition=1
+        let metal = SKSpriteNode(imageNamed:"spr_sparky_idle")
+        metal.xScale = 0.25
+        metal.yScale = 0.25
+        metal.zPosition=1
+        let base = SKSpriteNode(imageNamed:"spr_treasure")
+        base.xScale = 0.25
+        base.yScale = 0.25
+        base.zPosition=1
+        let turtle = SKSpriteNode(imageNamed:"spr_turtle_spikes")
+        turtle.xScale = 0.25
+        turtle.yScale = 0.25
+        turtle.zPosition=1
+        let turtleRage = SKSpriteNode(imageNamed:"spr_turtle_sneeze")
+        turtleRage.xScale = 0.25
+        turtleRage.yScale = 0.25
+        turtleRage.zPosition=1
     }
     
     override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
