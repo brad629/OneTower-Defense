@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		BC3341661CBB6403009237F3 /* Enemies in Resources */ = {isa = PBXBuildFile; fileRef = BC3341651CBB6403009237F3 /* Enemies */; };
 		E33FA23C1CBB443C003E8933 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E33FA23B1CBB443C003E8933 /* AppDelegate.swift */; };
 		E33FA23E1CBB443C003E8933 /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = E33FA23D1CBB443C003E8933 /* GameScene.sks */; };
 		E33FA2401CBB443C003E8933 /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = E33FA23F1CBB443C003E8933 /* GameScene.swift */; };
@@ -37,6 +38,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		BC3341651CBB6403009237F3 /* Enemies */ = {isa = PBXFileReference; lastKnownFileType = folder; name = Enemies; path = OneTowerDefense/Enemies; sourceTree = "<group>"; };
 		E33FA2381CBB443C003E8933 /* OneTowerDefense.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OneTowerDefense.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E33FA23B1CBB443C003E8933 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E33FA23D1CBB443C003E8933 /* GameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene.sks; sourceTree = "<group>"; };
@@ -83,6 +85,7 @@
 		E33FA22F1CBB443C003E8933 = {
 			isa = PBXGroup;
 			children = (
+				BC3341651CBB6403009237F3 /* Enemies */,
 				E33FA23A1CBB443C003E8933 /* OneTowerDefense */,
 				E33FA2531CBB443C003E8933 /* OneTowerDefenseTests */,
 				E33FA25E1CBB443C003E8933 /* OneTowerDefenseUITests */,
@@ -242,6 +245,7 @@
 				E33FA24A1CBB443C003E8933 /* LaunchScreen.storyboard in Resources */,
 				E33FA2471CBB443C003E8933 /* Assets.xcassets in Resources */,
 				E33FA2451CBB443C003E8933 /* Main.storyboard in Resources */,
+				BC3341661CBB6403009237F3 /* Enemies in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -498,6 +502,7 @@
 				E33FA2661CBB443C003E8933 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		E33FA2671CBB443C003E8933 /* Build configuration list for PBXNativeTarget "OneTowerDefenseTests" */ = {
 			isa = XCConfigurationList;
@@ -506,6 +511,7 @@
 				E33FA2691CBB443C003E8933 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		E33FA26A1CBB443C003E8933 /* Build configuration list for PBXNativeTarget "OneTowerDefenseUITests" */ = {
 			isa = XCConfigurationList;
@@ -514,6 +520,7 @@
 				E33FA26C1CBB443C003E8933 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
