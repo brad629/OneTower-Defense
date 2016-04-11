@@ -8,18 +8,14 @@
 
 import SpriteKit
 
-class Enemy : SKNode {
+class Enemy : SKSpriteNode {
     var maxHealth = 100.0
     var currentHealth:Double
     var enragePercent = 0.25
     var enraged = false
-    var normalSpeed = 10
-    var rageSpeed = 12
+    var speed = 10
     var value = 1
     //var resistance = nil
-    var basicImg : SKSpriteNode
-    var rageImg  : SKSpriteNode
-    var currentImg : SKSpriteNode
     
     init (position: CGPoint){
         currentHealth = maxHealth

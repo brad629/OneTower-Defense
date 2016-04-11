@@ -6,4 +6,7 @@
 //  Copyright © 2016 brad huntington. All rights reserved.
 //
 
-import Foundation
+class BulletBob: Enemy {
+    let texture = SKTexture (imageNamed: "spr_rocket")
+    override var speed = 15
+}
