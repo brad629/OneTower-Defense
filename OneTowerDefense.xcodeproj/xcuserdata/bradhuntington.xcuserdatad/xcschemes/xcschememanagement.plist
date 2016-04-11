@@ -4,7 +4,7 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
-		<key>OneTower Defense.xcscheme</key>
+		<key>OneTowerDefense.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
 			<integer>0</integer>
@@ -12,17 +12,17 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>E3E30FE01C97992F00C122C1</key>
+		<key>E33FA2371CBB443C003E8933</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>E3E30FF81C97992F00C122C1</key>
+		<key>E33FA24F1CBB443C003E8933</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>E3E310031C97992F00C122C1</key>
+		<key>E33FA25A1CBB443C003E8933</key>
 		<dict>
 			<key>primary</key>
 			<true/>

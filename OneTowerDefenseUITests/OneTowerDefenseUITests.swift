@@ -1,14 +1,14 @@
 //
-//  OneTower_DefenseUITests.swift
-//  OneTower DefenseUITests
+//  OneTowerDefenseUITests.swift
+//  OneTowerDefenseUITests
 //
-//  Created by brad huntington on 3/14/16.
+//  Created by brad huntington on 4/10/16.
 //  Copyright © 2016 brad huntington. All rights reserved.
 //
 
 import XCTest
 
-class OneTower_DefenseUITests: XCTestCase {
+class OneTowerDefenseUITests: XCTestCase {
         
     override func setUp() {
         super.setUp()

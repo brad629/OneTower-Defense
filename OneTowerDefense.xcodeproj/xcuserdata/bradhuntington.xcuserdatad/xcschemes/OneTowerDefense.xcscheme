@@ -14,10 +14,10 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "E3E30FE01C97992F00C122C1"
-               BuildableName = "OneTower Defense.app"
-               BlueprintName = "OneTower Defense"
-               ReferencedContainer = "container:OneTower Defense.xcodeproj">
+               BlueprintIdentifier = "E33FA2371CBB443C003E8933"
+               BuildableName = "OneTowerDefense.app"
+               BlueprintName = "OneTowerDefense"
+               ReferencedContainer = "container:OneTowerDefense.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -32,30 +32,30 @@
             skipped = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "E3E30FF81C97992F00C122C1"
-               BuildableName = "OneTower DefenseTests.xctest"
-               BlueprintName = "OneTower DefenseTests"
-               ReferencedContainer = "container:OneTower Defense.xcodeproj">
+               BlueprintIdentifier = "E33FA24F1CBB443C003E8933"
+               BuildableName = "OneTowerDefenseTests.xctest"
+               BlueprintName = "OneTowerDefenseTests"
+               ReferencedContainer = "container:OneTowerDefense.xcodeproj">
             </BuildableReference>
          </TestableReference>
          <TestableReference
             skipped = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "E3E310031C97992F00C122C1"
-               BuildableName = "OneTower DefenseUITests.xctest"
-               BlueprintName = "OneTower DefenseUITests"
-               ReferencedContainer = "container:OneTower Defense.xcodeproj">
+               BlueprintIdentifier = "E33FA25A1CBB443C003E8933"
+               BuildableName = "OneTowerDefenseUITests.xctest"
+               BlueprintName = "OneTowerDefenseUITests"
+               ReferencedContainer = "container:OneTowerDefense.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "E3E30FE01C97992F00C122C1"
-            BuildableName = "OneTower Defense.app"
-            BlueprintName = "OneTower Defense"
-            ReferencedContainer = "container:OneTower Defense.xcodeproj">
+            BlueprintIdentifier = "E33FA2371CBB443C003E8933"
+            BuildableName = "OneTowerDefense.app"
+            BlueprintName = "OneTowerDefense"
+            ReferencedContainer = "container:OneTowerDefense.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
       <AdditionalOptions>
@@ -75,10 +75,10 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "E3E30FE01C97992F00C122C1"
-            BuildableName = "OneTower Defense.app"
-            BlueprintName = "OneTower Defense"
-            ReferencedContainer = "container:OneTower Defense.xcodeproj">
+            BlueprintIdentifier = "E33FA2371CBB443C003E8933"
+            BuildableName = "OneTowerDefense.app"
+            BlueprintName = "OneTowerDefense"
+            ReferencedContainer = "container:OneTowerDefense.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <AdditionalOptions>
@@ -94,10 +94,10 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "E3E30FE01C97992F00C122C1"
-            BuildableName = "OneTower Defense.app"
-            BlueprintName = "OneTower Defense"
-            ReferencedContainer = "container:OneTower Defense.xcodeproj">
+            BlueprintIdentifier = "E33FA2371CBB443C003E8933"
+            BuildableName = "OneTowerDefense.app"
+            BlueprintName = "OneTowerDefense"
+            ReferencedContainer = "container:OneTowerDefense.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>

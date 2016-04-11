@@ -45,7 +45,7 @@ class GameScene: SKScene {
         bombRage.xScale = 0.25
         bombRage.yScale = 0.25
         bombRage.zPosition=1
-    
+        
         let rocket = SKSpriteNode(imageNamed:"spr_rocket")
         rocket.xScale = 0.25
         rocket.yScale = 0.25

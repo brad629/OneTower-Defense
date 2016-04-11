@@ -1,8 +1,8 @@
 //
 //  GameViewController.swift
-//  OneTower Defense
+//  OneTowerDefense
 //
-//  Created by brad huntington on 3/14/16.
+//  Created by brad huntington on 4/10/16.
 //  Copyright (c) 2016 brad huntington. All rights reserved.
 //
 
