@@ -17,9 +17,9 @@ class Enemy : SKNode {
     var rageSpeed = 12
     var value = 1
     //var resistance = nil
-    //var basicImg = nil
-    //var rageImg  = nil
-    //var currentImg = basicImg
+    var basicImg : SKSpriteNode
+    var rageImg  : SKSpriteNode
+    var currentImg : SKSpriteNode
     
     init (position: CGPoint){
         currentHealth = maxHealth
