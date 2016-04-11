@@ -7,8 +7,10 @@
 //
 
 import SpriteKit
-
 class GameScene: SKScene {
+    var selectedNode = SKSpriteNode()
+    var inputHelper = InputHelper()
+    var nodeNames:[String] = []
     override func didMoveToView(view: SKView) {
         /* Setup your scene here */
         let background = SKSpriteNode(imageNamed:"spr_Asphalt-Stone-Background")
@@ -23,6 +25,8 @@ class GameScene: SKScene {
         turret.xScale = 0.5
         turret.yScale = 0.5
         turret.zPosition=2
+        turret.name = "turret"
+        nodeNames.append("turret")
         turret.position = CGPointMake((frame.maxX*0.65),(frame.maxY)-((1/2)*turret.frame.size.height))
         self.addChild(turret)
         let blueIcon = SKSpriteNode(imageNamed:"spr_cannon_blue")
@@ -74,6 +78,7 @@ class GameScene: SKScene {
         wall.zPosition=1
         wall.position = CGPointMake(frame.midX,(frame.maxY)-((1/2)*wall.frame.size.height))
         self.addChild(wall)
+        
         //left collumn 1
         let wall2 = SKSpriteNode(imageNamed:"spr_rock")
         wall2.xScale = 0.5
@@ -232,28 +237,23 @@ class GameScene: SKScene {
         
         
     }
-    
     override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
-       /* Called when a touch begins */
- 
-       for touch in touches {
-            let location = touch.locationInNode(self)
-//            
-//            let sprite = SKSpriteNode(imageNamed:"Spaceship")
-//            
-//            sprite.xScale = 0.5
-//            sprite.yScale = 0.5
-//            sprite.position = location
-//            
-//            let action = SKAction.rotateByAngle(CGFloat(M_PI), duration:1)
-//            
-//            sprite.runAction(SKAction.repeatActionForever(action))
-//            
-//            self.addChild(sprite)
-       }
+        let touch = touches.first!
+        inputHelper.touchLocation = touch.locationInNode(self)
+        inputHelper.nrTouches += touches.count
+        inputHelper.hasTapped = true
+        print(nodeAtPoint(inputHelper.touchLocation).name)
     }
-   
-    override func update(currentTime: CFTimeInterval) {
-        /* Called before each frame is rendered */
+    
+    override func touchesMoved(touches: Set<UITouch>, withEvent event: UIEvent?) {
+        let touch = touches.first!
+        inputHelper.touchLocation = touch.locationInNode(self)
+        nodeAtPoint(inputHelper.touchLocation).position = inputHelper.touchLocation
+    }
+    
+    override func touchesEnded(touches: Set<UITouch>, withEvent event: UIEvent?) {
+        inputHelper.nrTouches -= touches.count
     }
 }
+
+
