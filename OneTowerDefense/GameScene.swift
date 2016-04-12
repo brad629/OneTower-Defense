@@ -248,7 +248,10 @@ class GameScene: SKScene {
     override func touchesMoved(touches: Set<UITouch>, withEvent event: UIEvent?) {
         let touch = touches.first!
         inputHelper.touchLocation = touch.locationInNode(self)
+        if nodeAtPoint(inputHelper.touchLocation).name == "turret"{
+            // we may be able to use a boolean here to make it follow the users finger better.
         nodeAtPoint(inputHelper.touchLocation).position = inputHelper.touchLocation
+        }
     }
     
     override func touchesEnded(touches: Set<UITouch>, withEvent event: UIEvent?) {
