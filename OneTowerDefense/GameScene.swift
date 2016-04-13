@@ -11,6 +11,9 @@ class GameScene: SKScene {
     var selectedNode = SKSpriteNode()
     var inputHelper = InputHelper()
     var nodeNames:[String] = []
+    var turretCounter = 0
+    var turretName = "turret"
+    var wallNodes: [SKSpriteNode] = []
     override func didMoveToView(view: SKView) {
         /* Setup your scene here */
         let background = SKSpriteNode(imageNamed:"spr_Asphalt-Stone-Background")
@@ -29,6 +32,9 @@ class GameScene: SKScene {
         nodeNames.append("turret")
         turret.position = CGPointMake((frame.maxX*0.65),(frame.maxY)-((1/2)*turret.frame.size.height))
         self.addChild(turret)
+        
+        let label = SKLabelNode(text: "hello")
+        label.position = CGPointMake((frame.maxX*0.65),(frame.maxY)-((1/2)*turret.frame.size.height)-label.frame.size.height)
         let blueIcon = SKSpriteNode(imageNamed:"spr_cannon_blue")
         blueIcon.xScale = 0.5
         blueIcon.yScale = 0.5
@@ -77,7 +83,9 @@ class GameScene: SKScene {
         wall.yScale = 0.5
         wall.zPosition=1
         wall.position = CGPointMake(frame.midX,(frame.maxY)-((1/2)*wall.frame.size.height))
+        
         self.addChild(wall)
+        wallNodes.append(wall)
         
         //left collumn 1
         let wall2 = SKSpriteNode(imageNamed:"spr_rock")
@@ -86,6 +94,7 @@ class GameScene: SKScene {
         wall2.zPosition=1
         wall2.position = CGPointMake(frame.midX*0.75,(frame.maxY)-((1/2)*wall2.frame.size.height))
         self.addChild(wall2)
+        wallNodes.append(wall2)
         
         let wall3 = SKSpriteNode(imageNamed:"spr_rock")
         wall3.xScale = 0.5
@@ -117,10 +126,12 @@ class GameScene: SKScene {
         wall7.zPosition=1
         wall7.position = CGPointMake((frame.midX*0.75),wall6.frame.maxY-((1.5)*wall2.frame.size.height))
         self.addChild(wall7)
+        
         let wall8 = SKSpriteNode(imageNamed:"spr_rock")
         wall8.xScale = 0.5
         wall8.yScale = 0.5
         wall8.zPosition=1
+        
         wall8.position = CGPointMake((frame.midX*0.75),wall7.frame.maxY-((1.5)*wall2.frame.size.height))
         self.addChild(wall8)
         //right collumn one
@@ -152,6 +163,7 @@ class GameScene: SKScene {
         wall13.xScale = 0.5
         wall13.yScale = 0.5
         wall13.zPosition=1
+        
         //turn right
         wall13.position = CGPointMake((frame.midX*1.25),wall6.frame.maxY-((1.5)*wall2.frame.size.height))
         self.addChild(wall13)
@@ -242,21 +254,43 @@ class GameScene: SKScene {
         inputHelper.touchLocation = touch.locationInNode(self)
         inputHelper.nrTouches += touches.count
         inputHelper.hasTapped = true
-        print(nodeAtPoint(inputHelper.touchLocation).name)
+        print(nodeAtPoint(inputHelper.touchLocation))
+        //print(nodeAtPoint(inputHelper.touchLocation).name)
+        //print(nodeAtPoint(inputHelper.touchLocation).position)
     }
     
     override func touchesMoved(touches: Set<UITouch>, withEvent event: UIEvent?) {
         let touch = touches.first!
+        
         inputHelper.touchLocation = touch.locationInNode(self)
         if nodeAtPoint(inputHelper.touchLocation).name == "turret"{
             // we may be able to use a boolean here to make it follow the users finger better.
         nodeAtPoint(inputHelper.touchLocation).position = inputHelper.touchLocation
+            
         }
-    }
+ }
     
     override func touchesEnded(touches: Set<UITouch>, withEvent event: UIEvent?) {
-        inputHelper.nrTouches -= touches.count
+        for node in wallNodes{
+           // print(nodeAtPoint(inputHelper.touchLocation).position)
+           // print(node.position)
+           // if node.box.interse{
+          //      print("intersecting")
+//                let turret = SKSpriteNode(imageNamed:"spr_cannon_barrel")
+//                turret.xScale = 0.25
+//                turret.yScale = 0.25
+//                turret.zPosition=3
+//                print(turret.name! + String(turretCounter))
+//                //turret.name = turret.name! + String(turretCounter)
+//                //nodeNames.append("turret")
+//                turret.position = node.position
+//                self.addChild(turret)
+//                turretCounter += 1
+
+            }
+            
+        }
     }
-}
+//}
 
 
