@@ -46,12 +46,12 @@ class Enemy : SKSpriteNode {
     func enrage(){
         enraged = true
     }
-    func move(){
+    override func updateDelta(delta :NSTimeInterval){
         if position.y < 370 && position.x > 580  {
             position.x = position.x - speed
         }else{
             position.y = position.y - speed
         }
-
+        super updateDelta(delta)
 }
 }

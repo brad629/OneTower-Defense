@@ -26,16 +26,16 @@ class Turret : SKSpriteNode {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func prepareToShoot(){
+    func prepareToShoot(Enemy:target){
         if fireRate - timeSinceLastShot <= 0 {
-            shoot()
+            shoot(target)
         }
         else {
             timeSinceLastShot++
         }
     }
     
-    func shoot(){
-        //need bullet class
+    func shoot(Enemy: target){
+        var bullet = bullet(position: self.position, damage: damage, slow: slow, snare: snare, areaOfEffect: snare, target: target)
     }
 }
