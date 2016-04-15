@@ -11,6 +11,6 @@ class BulletBob: Enemy {
     override var speed = 15
     
     init (position: CGPoint){
-        super.init(position)
+        super.init(position,texture)
     }
 }
