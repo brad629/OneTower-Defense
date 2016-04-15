@@ -12,7 +12,6 @@ class GameScene: SKScene {
     var selectedNode = SKNode()
     var inputHelper = InputHelper()
     var nodeNames:[String] = []
-    var turretCounter = 0
     var turretName = "turret"
     var wallNodes: [SKSpriteNode] = []
     override func didMoveToView(view: SKView) {
