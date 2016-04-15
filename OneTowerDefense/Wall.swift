@@ -15,7 +15,8 @@ class Wall : SKSpriteNode{
         let texture = SKTexture (imageNamed: "spr_rock")
         super.init(texture: texture,color:SKColor(),size:texture.size())
         self.position = position
-        
+        self.xScale = 0.5
+        self.yScale = 0.5
     }
     
     required init?(coder aDecoder: NSCoder) {
