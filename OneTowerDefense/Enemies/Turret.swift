@@ -16,16 +16,17 @@ class Turret : SKSpriteNode {
     var snare = false
     var areaOfEffect = 0
     
+    
     init (position: CGPoint){
         let texture = SKTexture (imageNamed: "spr_cannon_barrel")
-        super.init(texture: texture)
+        super.init(texture: texture,color:SKColor(),size:texture.size())
     }
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func prepareToShoot(Enemy:target){
+    func prepareToShoot(target:Enemy){
         if fireRate - timeSinceLastShot <= 0 {
             shoot(target)
         }
@@ -34,7 +35,7 @@ class Turret : SKSpriteNode {
         }
     }
     
-    func shoot(Enemy: target){
-        var bullet = bullet(position: self.position, damage: damage, slow: slow, snare: snare, areaOfEffect: snare, target: target)
+    func shoot(target: Enemy){
+       // var bullet = Bullet(position: self.position, damage: damage, slow: slow, snare: snare, areaOfEffect: snare, target: target)
     }
 }

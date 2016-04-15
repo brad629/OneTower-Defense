@@ -24,13 +24,12 @@ class GameScene: SKScene {
         self.addChild(background)
         
         
-        let turret = SKSpriteNode(imageNamed:"spr_cannon_barrel")
+        let turret = Turret(position:CGPointMake((frame.maxX*0.65),(frame.maxY)-((1/2)*frame.size.height)))
         turret.xScale = 0.5
         turret.yScale = 0.5
         turret.zPosition=2
         turret.name = "turret"
         nodeNames.append("turret")
-        turret.position = CGPointMake((frame.maxX*0.65),(frame.maxY)-((1/2)*turret.frame.size.height))
         self.addChild(turret)
         
         let label = SKLabelNode(text: "hello")

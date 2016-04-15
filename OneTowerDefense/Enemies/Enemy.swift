@@ -13,13 +13,13 @@ class Enemy : SKSpriteNode {
     var currentHealth:Double
     var enragePercent = 0.25
     var enraged = false
-    var speed = 10
+    var speeds = 10
     var value = 1
     //var resistance = nil
     
     init (position: CGPoint){
         currentHealth = maxHealth
-        super.init(texture:texture)
+        super.init(texture: texture,color:SKColor(),size:texture!.size())
         self.position = position
     }
     
@@ -46,12 +46,11 @@ class Enemy : SKSpriteNode {
     func enrage(){
         enraged = true
     }
-    override func updateDelta(delta :NSTimeInterval){
+     func updateDelta(delta :NSTimeInterval){
         if position.y < 370 && position.x > 580  {
             position.x = position.x - speed
         }else{
             position.y = position.y - speed
         }
-        super updateDelta(delta)
 }
 }

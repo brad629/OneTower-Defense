@@ -18,6 +18,9 @@
 		E33FA2551CBB443C003E8933 /* OneTowerDefenseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E33FA2541CBB443C003E8933 /* OneTowerDefenseTests.swift */; };
 		E33FA2601CBB443C003E8933 /* OneTowerDefenseUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E33FA25F1CBB443C003E8933 /* OneTowerDefenseUITests.swift */; };
 		E33FA26E1CBB446B003E8933 /* inputHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = E33FA26D1CBB446B003E8933 /* inputHelper.swift */; };
+		E395B37F1CC0A8FC0065E076 /* Turret.swift in Sources */ = {isa = PBXBuildFile; fileRef = E395B37E1CC0A8FC0065E076 /* Turret.swift */; };
+		E395B3811CC0A9030065E076 /* Bullet.swift in Sources */ = {isa = PBXBuildFile; fileRef = E395B3801CC0A9030065E076 /* Bullet.swift */; };
+		E395B3831CC0AA150065E076 /* Enemy.swift in Sources */ = {isa = PBXBuildFile; fileRef = E395B3821CC0AA150065E076 /* Enemy.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -55,6 +58,9 @@
 		E33FA25F1CBB443C003E8933 /* OneTowerDefenseUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OneTowerDefenseUITests.swift; sourceTree = "<group>"; };
 		E33FA2611CBB443C003E8933 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E33FA26D1CBB446B003E8933 /* inputHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = inputHelper.swift; sourceTree = "<group>"; };
+		E395B37E1CC0A8FC0065E076 /* Turret.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Turret.swift; path = Enemies/Turret.swift; sourceTree = "<group>"; };
+		E395B3801CC0A9030065E076 /* Bullet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Bullet.swift; path = Enemies/Bullet.swift; sourceTree = "<group>"; };
+		E395B3821CC0AA150065E076 /* Enemy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Enemy.swift; path = Enemies/Enemy.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -106,6 +112,9 @@
 		E33FA23A1CBB443C003E8933 /* OneTowerDefense */ = {
 			isa = PBXGroup;
 			children = (
+				E395B3821CC0AA150065E076 /* Enemy.swift */,
+				E395B3801CC0A9030065E076 /* Bullet.swift */,
+				E395B37E1CC0A8FC0065E076 /* Turret.swift */,
 				E33FA23B1CBB443C003E8933 /* AppDelegate.swift */,
 				E33FA23D1CBB443C003E8933 /* GameScene.sks */,
 				E33FA23F1CBB443C003E8933 /* GameScene.swift */,
@@ -270,10 +279,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E395B3831CC0AA150065E076 /* Enemy.swift in Sources */,
+				E395B37F1CC0A8FC0065E076 /* Turret.swift in Sources */,
 				E33FA2401CBB443C003E8933 /* GameScene.swift in Sources */,
 				E33FA26E1CBB446B003E8933 /* inputHelper.swift in Sources */,
 				E33FA2421CBB443C003E8933 /* GameViewController.swift in Sources */,
 				E33FA23C1CBB443C003E8933 /* AppDelegate.swift in Sources */,
+				E395B3811CC0A9030065E076 /* Bullet.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
