@@ -8,6 +8,7 @@
 
 import SpriteKit
 class GameScene: SKScene {
+    var turretCounter = 1
     var selectedNode = SKNode()
     var inputHelper = InputHelper()
     var nodeNames:[String] = []
@@ -273,6 +274,17 @@ class GameScene: SKScene {
     
     override func touchesEnded(touches: Set<UITouch>, withEvent event: UIEvent?) {
         for node in wallNodes{
+            if node.intersectsNode(selectedNode){
+                selectedNode.position = CGPointMake((frame.maxX*0.65),(frame.maxY)-((1/2)*frame.size.height))
+                let turret = Turret(position: node.position)
+                turret.xScale = 0.25
+                turret.yScale = 0.25
+                turret.zPosition=2
+                turret.name = "turret \(turretCounter)"
+                nodeNames.append("turret\(turretCounter)")
+                self.addChild(turret)
+                turretCounter += 1
+            }
            // print(nodeAtPoint(inputHelper.touchLocation).position)
            // print(node.position)
            // if node.box.interse{
