@@ -8,7 +8,7 @@
 
 import SpriteKit
 class GameScene: SKScene {
-    var selectedNode = SKSpriteNode()
+    var selectedNode = SKNode()
     var inputHelper = InputHelper()
     var nodeNames:[String] = []
     var turretCounter = 0
@@ -255,6 +255,8 @@ class GameScene: SKScene {
         inputHelper.nrTouches += touches.count
         inputHelper.hasTapped = true
         print(nodeAtPoint(inputHelper.touchLocation))
+        selectedNode = nodeAtPoint(inputHelper.touchLocation)
+
         //print(nodeAtPoint(inputHelper.touchLocation).name)
         //print(nodeAtPoint(inputHelper.touchLocation).position)
     }
@@ -263,9 +265,9 @@ class GameScene: SKScene {
         let touch = touches.first!
         
         inputHelper.touchLocation = touch.locationInNode(self)
-        if nodeAtPoint(inputHelper.touchLocation).name == "turret"{
+        if selectedNode.name == "turret"{
             // we may be able to use a boolean here to make it follow the users finger better.
-        nodeAtPoint(inputHelper.touchLocation).position = inputHelper.touchLocation
+        selectedNode.position = inputHelper.touchLocation
             
         }
  }
