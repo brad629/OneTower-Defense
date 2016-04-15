@@ -17,7 +17,7 @@ class Turtle: Enemy {
     override var value = 10
     
     init (position: CGPoint){
-        super.init(position)
+        super.init(position, normaTexture)
     }
     
     override func enrage(){

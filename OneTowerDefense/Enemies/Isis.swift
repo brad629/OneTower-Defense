@@ -17,7 +17,7 @@ class Isis: Enemy {
     override var value = 5
     
     init (position: CGPoint){
-        super.init(position)
+        super.init(position,normaTexture)
     }
     
     override func enrage(){

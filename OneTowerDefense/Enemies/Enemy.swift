@@ -18,9 +18,9 @@ class Enemy : SKSpriteNode {
 
     //var resistance = nil
     
-    init (position: CGPoint){
+    init (position: CGPoint, texture: SKTexture){
         currentHealth = maxHealth
-        let texture = SKTexture (imageNamed: "spr_lives")
+        let texture = texture
         super.init(texture: texture,color:SKColor(),size:texture.size())
         self.position = position
     }

@@ -17,7 +17,7 @@ class Isis: MetalMan {
     override var value = 3
     
     init (position: CGPoint){
-        super.init(position)
+        super.init(position, normalTexture)
     }
     
     override func enrage(){
