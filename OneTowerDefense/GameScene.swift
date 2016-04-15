@@ -24,7 +24,7 @@ class GameScene: SKScene {
         self.addChild(background)
         
         
-        let turret = Turret(position:CGPointMake((frame.maxX*0.65),(frame.maxY)-((1/2)*frame.size.height)))
+        let turret = Turret(position:CGPointMake((frame.maxX*0.65),(frame.midY)))
         turret.xScale = 0.5
         turret.yScale = 0.5
         turret.zPosition=2
@@ -254,8 +254,10 @@ class GameScene: SKScene {
         inputHelper.nrTouches += touches.count
         inputHelper.hasTapped = true
         print(nodeAtPoint(inputHelper.touchLocation))
-        selectedNode = nodeAtPoint(inputHelper.touchLocation)
-
+        if nodeAtPoint(inputHelper.touchLocation).name == "turret"{
+            
+            selectedNode = nodeAtPoint(inputHelper.touchLocation)
+        }
         //print(nodeAtPoint(inputHelper.touchLocation).name)
         //print(nodeAtPoint(inputHelper.touchLocation).position)
     }

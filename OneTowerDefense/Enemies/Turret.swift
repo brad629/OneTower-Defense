@@ -20,6 +20,8 @@ class Turret : SKSpriteNode {
     init (position: CGPoint){
         let texture = SKTexture (imageNamed: "spr_cannon_barrel")
         super.init(texture: texture,color:SKColor(),size:texture.size())
+        self.position = position
+
     }
     
     required init?(coder aDecoder: NSCoder) {
