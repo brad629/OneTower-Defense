@@ -101,38 +101,49 @@ class GameScene: SKScene {
         wall3.zPosition=1
         wall3.position = CGPointMake((frame.midX*0.75),wall2.frame.maxY-((1.5)*wall2.frame.size.height))
         self.addChild(wall3)
+        wallNodes.append(wall3)
+        
         let wall4 = SKSpriteNode(imageNamed:"spr_rock")
         wall4.xScale = 0.5
         wall4.yScale = 0.5
         wall4.zPosition=1
         wall4.position = CGPointMake((frame.midX*0.75),wall3.frame.maxY-((1.5)*wall2.frame.size.height))
         self.addChild(wall4)
+        wallNodes.append(wall4)
+        
         let wall5 = SKSpriteNode(imageNamed:"spr_rock")
         wall5.xScale = 0.5
         wall5.yScale = 0.5
         wall5.zPosition=1
         wall5.position = CGPointMake((frame.midX*0.75),wall4.frame.maxY-((1.5)*wall2.frame.size.height))
         self.addChild(wall5)
+        wallNodes.append(wall5)
+        
         let wall6 = SKSpriteNode(imageNamed:"spr_rock")
         wall6.xScale = 0.5
         wall6.yScale = 0.5
         wall6.zPosition=1
         wall6.position = CGPointMake((frame.midX*0.75),wall5.frame.maxY-((1.5)*wall2.frame.size.height))
         self.addChild(wall6)
+        wallNodes.append(wall6)
+        
         let wall7 = SKSpriteNode(imageNamed:"spr_rock")
         wall7.xScale = 0.5
         wall7.yScale = 0.5
         wall7.zPosition=1
         wall7.position = CGPointMake((frame.midX*0.75),wall6.frame.maxY-((1.5)*wall2.frame.size.height))
         self.addChild(wall7)
+        wallNodes.append(wall7)
+        
         
         let wall8 = SKSpriteNode(imageNamed:"spr_rock")
         wall8.xScale = 0.5
         wall8.yScale = 0.5
         wall8.zPosition=1
-        
         wall8.position = CGPointMake((frame.midX*0.75),wall7.frame.maxY-((1.5)*wall2.frame.size.height))
         self.addChild(wall8)
+        wallNodes.append(wall8)
+        
         //right collumn one
         let wall9 = SKSpriteNode(imageNamed:"spr_rock")
         wall9.xScale = 0.5
@@ -140,6 +151,8 @@ class GameScene: SKScene {
         wall9.zPosition=1
         wall9.position = CGPointMake((frame.midX),wall2.frame.maxY-((1.5)*wall2.frame.size.height))
         self.addChild(wall9)
+        wallNodes.append(wall9)
+        
         let wall10 = SKSpriteNode(imageNamed:"spr_rock")
         wall10.xScale = 0.5
         wall10.yScale = 0.5
@@ -147,31 +160,39 @@ class GameScene: SKScene {
         wall10.position = CGPointMake((frame.midX),wall3.frame.maxY-((1.5)*wall2.frame.size.height))
         self.addChild(wall10)
         let wall11 = SKSpriteNode(imageNamed:"spr_rock")
+        wallNodes.append(wall10)
+        
         wall11.xScale = 0.5
         wall11.yScale = 0.5
         wall11.zPosition=1
         wall11.position = CGPointMake((frame.midX),wall4.frame.maxY-((1.5)*wall2.frame.size.height))
         self.addChild(wall11)
+        wallNodes.append(wall11)
+        
         let wall12 = SKSpriteNode(imageNamed:"spr_rock")
         wall12.xScale = 0.5
         wall12.yScale = 0.5
         wall12.zPosition=1
         wall12.position = CGPointMake((frame.midX),wall5.frame.maxY-((1.5)*wall2.frame.size.height))
         self.addChild(wall12)
+        wallNodes.append(wall2)
+        
         let wall13 = SKSpriteNode(imageNamed:"spr_rock")
         wall13.xScale = 0.5
         wall13.yScale = 0.5
         wall13.zPosition=1
-        
         //turn right
         wall13.position = CGPointMake((frame.midX*1.25),wall6.frame.maxY-((1.5)*wall2.frame.size.height))
         self.addChild(wall13)
+        wallNodes.append(wall13)
+        
         let wall14 = SKSpriteNode(imageNamed:"spr_rock")
         wall14.xScale = 0.5
         wall14.yScale = 0.5
         wall14.zPosition=1
         wall14.position = CGPointMake((frame.midX),wall7.frame.maxY-((1.5)*wall2.frame.size.height))
         self.addChild(wall14)
+        wallNodes.append(wall14)
         
         //wall inbetween the top left collumn and bottom left collumn
         let wall15 = SKSpriteNode(imageNamed:"spr_rock")
@@ -180,6 +201,8 @@ class GameScene: SKScene {
         wall15.zPosition=1
         wall15.position = CGPointMake((frame.midX*0.875),wall7.frame.maxY-((1.5)*wall2.frame.size.height))
         self.addChild(wall15)
+        wallNodes.append(wall15)
+        
         //bottom right collumn
         let wall16 = SKSpriteNode(imageNamed:"spr_rock")
         wall16.xScale = 0.5
@@ -187,6 +210,8 @@ class GameScene: SKScene {
         wall16.zPosition=1
         wall16.position = CGPointMake((frame.midX*1.25),wall5.frame.maxY-((1.5)*wall2.frame.size.height))
         self.addChild(wall16)
+        wallNodes.append(wall16)
+        
         //block between right collumns
         let wall17 = SKSpriteNode(imageNamed:"spr_rock")
         wall17.xScale = 0.5
@@ -194,37 +219,49 @@ class GameScene: SKScene {
         wall17.zPosition=1
         wall17.position = CGPointMake((frame.midX*1.125),wall5.frame.maxY-((1.5)*wall2.frame.size.height))
         self.addChild(wall17)
+        wallNodes.append(wall17)
+        
         let wall18 = SKSpriteNode(imageNamed:"spr_rock")
         wall18.xScale = 0.5
         wall18.yScale = 0.5
         wall18.zPosition=1
         wall18.position = CGPointMake((frame.midX*1.25),wall7.frame.maxY-((1.5)*wall2.frame.size.height))
         self.addChild(wall18)
+        wallNodes.append(wall18)
+        
         let wall19 = SKSpriteNode(imageNamed:"spr_rock")
         wall19.xScale = 0.5
         wall19.yScale = 0.5
         wall19.zPosition=1
         wall19.position = CGPointMake((frame.midX*1.25),wall7.frame.maxY-((1.5)*wall2.frame.size.height))
         self.addChild(wall19)
+        wallNodes.append(wall19)
+        
         let wall20 = SKSpriteNode(imageNamed:"spr_rock")
         wall20.xScale = 0.5
         wall20.yScale = 0.5
         wall20.zPosition=1
         wall20.position = CGPointMake((frame.midX*1.25),wall19.frame.maxY-((1.5)*wall2.frame.size.height))
         self.addChild(wall20)
+        wallNodes.append(wall20)
+        
         let wall21 = SKSpriteNode(imageNamed:"spr_rock")
         wall21.xScale = 0.5
         wall21.yScale = 0.5
         wall21.zPosition=1
         wall21.position = CGPointMake((frame.midX*1.25),wall20.frame.maxY-((1.5)*wall2.frame.size.height))
         self.addChild(wall21)
+        wallNodes.append(wall21)
+        
         let wall22 = SKSpriteNode(imageNamed:"spr_rock")
         wall22.xScale = 0.5
         wall22.yScale = 0.5
         wall22.zPosition=1
         wall22.position = CGPointMake((frame.midX*1.25),wall21.frame.maxY-((1.5)*wall2.frame.size.height))
         self.addChild(wall22)
+        wallNodes.append(wall22)
         //end of bottom right collumn
+        
         //start bottom left collumn
         let wall23 = SKSpriteNode(imageNamed:"spr_rock")
         wall23.xScale = 0.5
@@ -232,19 +269,23 @@ class GameScene: SKScene {
         wall23.zPosition=1
         wall23.position = CGPointMake((frame.midX),wall19.frame.maxY-((1.5)*wall2.frame.size.height))
         self.addChild(wall23)
+        wallNodes.append(wall23)
+        
         let wall24 = SKSpriteNode(imageNamed:"spr_rock")
         wall24.xScale = 0.5
         wall24.yScale = 0.5
         wall24.zPosition=1
         wall24.position = CGPointMake((frame.midX),wall23.frame.maxY-((1.5)*wall2.frame.size.height))
         self.addChild(wall24)
+            wallNodes.append(wall24)
+        
         let wall25 = SKSpriteNode(imageNamed:"spr_rock")
         wall25.xScale = 0.5
         wall25.yScale = 0.5
         wall25.zPosition=1
         wall25.position = CGPointMake((frame.midX),wall24.frame.maxY-((1.5)*wall2.frame.size.height))
         self.addChild(wall25)
-        
+        wallNodes.append(wall25)
         
         
     }
