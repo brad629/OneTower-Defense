@@ -9,7 +9,6 @@
 import SpriteKit
 
 class Bullet : SKSpriteNode {
-    let texture = SKTexture (imageNamed: "spr_cannon_blue")
     
     init (position: CGPoint, damage: Double, slow: int, snare: bool, areaOfEffect: int, target: Enemy) {
         self.position = position
@@ -18,7 +17,8 @@ class Bullet : SKSpriteNode {
         self.snare = snare
         self.areaOfEffect = areaOfEffect
         self.target = target
-        super.init()
+        let texture = SKTexture (imageNamed: "spr_cannon_blue")
+        super.init(texture:texture)
     }
     override func updateDelta(delta: NSTimeInterval){
         if self.box.intersects(target.box){

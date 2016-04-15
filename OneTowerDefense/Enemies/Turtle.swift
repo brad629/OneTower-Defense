@@ -17,7 +17,7 @@ class Turtle: Enemy {
     override var value = 10
     
     init (position: CGPoint){
-        super.init(positions)
+        super.init(position)
     }
     
     override func enrage(){

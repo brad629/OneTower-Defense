@@ -19,14 +19,14 @@ class Enemy : SKSpriteNode {
     
     init (position: CGPoint){
         currentHealth = maxHealth
-        super.init()
+        super.init(texture:texture)
         self.position = position
     }
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
+
     func move (position: CGPoint) {
         self.position = position
     }
