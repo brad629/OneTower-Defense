@@ -77,11 +77,11 @@ class GameScene: SKScene {
         turtleRage.zPosition=1
         // build map
         //top right wall
-        let wall = SKSpriteNode(imageNamed:"spr_rock")
-        wall.xScale = 0.5
-        wall.yScale = 0.5
-        wall.zPosition=1
-        wall.position = CGPointMake(frame.midX,(frame.maxY)-((1/2)*wall.frame.size.height))
+        let wallBase = SKSpriteNode(imageNamed:"spr_rock")
+        wallBase.xScale = 0.5
+        wallBase.yScale = 0.5
+        
+        let wall = Wall(position: CGPointMake(frame.midX,(frame.maxY)-((1/2)*wallBase.frame.size.height)))
         
         self.addChild(wall)
         wallNodes.append(wall)

@@ -17,6 +17,7 @@ class Wall : SKSpriteNode{
         self.position = position
         self.xScale = 0.5
         self.yScale = 0.5
+        self.zPosition = 1
     }
     
     required init?(coder aDecoder: NSCoder) {
