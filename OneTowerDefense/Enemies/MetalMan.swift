@@ -16,6 +16,10 @@ class Isis: MetalMan {
     override var enragePercent = 0.30
     override var value = 3
     
+    init (position: CGPoint){
+        super.init(positions)
+    }
+    
     override func enrage(){
         super.enrage()
         self.texture = rageTexture

@@ -16,6 +16,10 @@ class Isis: Enemy {
     override var enragePercent = 0.10
     override var value = 5
     
+    init (position: CGPoint){
+        super.init(positions)
+    }
+    
     override func enrage(){
         super.enrage()
         self.texture = rageTexture

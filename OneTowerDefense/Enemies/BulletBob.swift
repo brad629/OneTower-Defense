@@ -9,4 +9,8 @@
 class BulletBob: Enemy {
     let texture = SKTexture (imageNamed: "spr_rocket")
     override var speed = 15
+    
+    init (position: CGPoint){
+        super.init(positions)
+    }
 }

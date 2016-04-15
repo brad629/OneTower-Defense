@@ -16,6 +16,10 @@ class Turtle: Enemy {
     override var enragePercent = 0.10
     override var value = 10
     
+    init (position: CGPoint){
+        super.init(positions)
+    }
+    
     override func enrage(){
         super.enrage()
         self.texture = rageTexture
