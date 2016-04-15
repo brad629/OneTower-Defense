@@ -15,9 +15,8 @@ class Turret : SKSpriteNode {
     var slow = 0
     var snare = false
     var areaOfEffect = 0
-
+    
     init (position: CGPoint){
-        position = position
         let texture = SKTexture (imageNamed: "spr_cannon_barrel")
         super.init(texture: texture)
     }
