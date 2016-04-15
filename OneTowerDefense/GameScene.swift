@@ -24,7 +24,7 @@ class GameScene: SKScene {
         self.addChild(background)
         
         
-        let turret = Turret(position:CGPointMake((frame.maxX*0.65),(frame.midY)))
+        let turret = Turret(position:CGPointMake((frame.maxX*0.65),(frame.midY + 1/2*frame.midY + 1/4*frame.midY )))
         turret.xScale = 0.5
         turret.yScale = 0.5
         turret.zPosition=2
@@ -276,7 +276,7 @@ class GameScene: SKScene {
     override func touchesEnded(touches: Set<UITouch>, withEvent event: UIEvent?) {
         for node in wallNodes{
             if node.intersectsNode(selectedNode){
-                selectedNode.position = CGPointMake((frame.maxX*0.65),(frame.maxY)-((1/2)*frame.size.height))
+                selectedNode.position = CGPointMake((frame.maxX*0.65),(frame.midY + 1/2*frame.midY + 1/4*frame.midY ))
                 let turret = Turret(position: node.position)
                 turret.xScale = 0.25
                 turret.yScale = 0.25
@@ -285,6 +285,8 @@ class GameScene: SKScene {
                 nodeNames.append("turret\(turretCounter)")
                 self.addChild(turret)
                 turretCounter += 1
+            }
+            else{
             }
            // print(nodeAtPoint(inputHelper.touchLocation).position)
            // print(node.position)
