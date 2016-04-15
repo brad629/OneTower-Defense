@@ -15,11 +15,13 @@ class Enemy : SKSpriteNode {
     var enraged = false
     var speeds = 10
     var value = 1
+
     //var resistance = nil
     
     init (position: CGPoint){
         currentHealth = maxHealth
-        super.init(texture: texture,color:SKColor(),size:texture!.size())
+        let texture = SKTexture (imageNamed: "spr_lives")
+        super.init(texture: texture,color:SKColor(),size:texture.size())
         self.position = position
     }
     

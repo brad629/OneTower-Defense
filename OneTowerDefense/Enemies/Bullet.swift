@@ -10,19 +10,23 @@ import SpriteKit
 
 class Bullet : SKSpriteNode {
     
-    init (position: CGPoint, damage: Double, slow: int, snare: bool, areaOfEffect: int, target: Enemy) {
-        self.position = position
-        self.damage = damage
-        self.slow = slow
-        self.snare = snare
-        self.areaOfEffect = areaOfEffect
-        self.target = target
+    init (position: CGPoint, damage: Double, slow: Int, snare: Bool, areaOfEffect: Int, target: Enemy) {
+        var position = position
+        var damage = damage
+        var slow = slow
+        var snare = snare
+        var areaOfEffect = areaOfEffect
+        var target = target
         let texture = SKTexture (imageNamed: "spr_cannon_blue")
-        super.init(texture:texture)
+        super.init(texture: texture,color:SKColor(),size:texture.size())
     }
-    override func updateDelta(delta: NSTimeInterval){
-        if self.box.intersects(target.box){
-            target.takeDamage(damage)
-        }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    func updateDelta(delta: NSTimeInterval){
+     //   if self.box.intersects(self.target.box){
+     //       self.target.takeDamage(self.damage)
+    //    }
     }
 }
