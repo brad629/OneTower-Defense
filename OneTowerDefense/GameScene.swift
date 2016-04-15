@@ -304,6 +304,8 @@ class GameScene: SKScene {
     }
     
     override func touchesMoved(touches: Set<UITouch>, withEvent event: UIEvent?) {
+        if selectedNode.name == "turret"{
+
         let touch = touches.first!
         
         inputHelper.touchLocation = touch.locationInNode(self)
@@ -312,9 +314,11 @@ class GameScene: SKScene {
         selectedNode.position = inputHelper.touchLocation
             
         }
+        }
  }
     
     override func touchesEnded(touches: Set<UITouch>, withEvent event: UIEvent?) {
+        
         for node in wallNodes{
             if node.intersectsNode(selectedNode){
                 selectedNode.position = CGPointMake((frame.maxX*0.65),(frame.midY + 1/2*frame.midY + 1/4*frame.midY ))
@@ -329,6 +333,7 @@ class GameScene: SKScene {
             }
             else{
             }
+            
            // print(nodeAtPoint(inputHelper.touchLocation).position)
            // print(node.position)
            // if node.box.interse{
@@ -345,7 +350,8 @@ class GameScene: SKScene {
 //                turretCounter += 1
 
             }
-            
+        
+        
         }
     }
 //}
