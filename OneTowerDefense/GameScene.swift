@@ -22,7 +22,11 @@ class GameScene: SKScene {
         background.zPosition=0
         background.position = CGPointMake(frame.midX,frame.midY)
         self.addChild(background)
-        
+        let bobby = BulletBob(position:CGPointMake((frame.midX*0.875),(frame.midY + 1/2*frame.midY + 1/4*frame.midY )))
+        bobby.xScale = 0.5
+        bobby.yScale = 0.5
+        bobby.zPosition = 3
+        self.addChild(bobby)
         
         let turret = Turret(position:CGPointMake((frame.maxX*0.65),(frame.midY + 1/2*frame.midY + 1/4*frame.midY )))
         turret.xScale = 0.5
@@ -197,6 +201,7 @@ class GameScene: SKScene {
                 turretCounter += 1
             }
             else{
+                
             }
             
            // print(nodeAtPoint(inputHelper.touchLocation).position)

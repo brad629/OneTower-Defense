@@ -42,7 +42,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "OneTowerDefense/Enemies/BulletBob.swift"
-            timestampString = "482391086.17983"
+            timestampString = "482696501.566416"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "10"
@@ -58,13 +58,13 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "OneTowerDefense/Enemies/BulletBob.swift"
-            timestampString = "482391148.623103"
+            timestampString = "482696021.455969"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "11"
-            endingLineNumber = "11"
-            landmarkName = "BulletBob"
-            landmarkType = "3">
+            startingLineNumber = "13"
+            endingLineNumber = "13"
+            landmarkName = "init(position:)"
+            landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

@@ -5,12 +5,18 @@
 //  Created by bradley huntington on 4/8/16.
 //  Copyright © 2016 brad huntington. All rights reserved.
 //
-
+import SpriteKit
 class BulletBob: Enemy {
-    let texture = SKTexture (imageNamed: "spr_rocket")
-    override var speed = 15
+    //override var speed = 15
     
     init (position: CGPoint){
-        super.init(position,texture)
+        let texture = SKTexture(imageNamed: "spr_rocket")
+
+        super.init(position: position,texture: texture)
+
+    }
+
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
     }
 }
