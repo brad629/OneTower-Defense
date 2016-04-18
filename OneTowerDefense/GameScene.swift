@@ -8,6 +8,8 @@
 
 import SpriteKit
 class GameScene: SKScene {
+    var delta: NSTimeInterval = 1/60
+
     var turretCounter = 1
     var selectedNode = SKNode()
     var inputHelper = InputHelper()
@@ -157,6 +159,10 @@ class GameScene: SKScene {
         
         
     }
+    override func update(currentTime: NSTimeInterval) {
+        bobby.updateDelta(delta)
+        
+    }
     override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
         let touch = touches.first!
         inputHelper.touchLocation = touch.locationInNode(self)
@@ -224,6 +230,10 @@ class GameScene: SKScene {
         
         }
     }
+
+
+
+}
 //}
 
 
