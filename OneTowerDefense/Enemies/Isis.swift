@@ -6,23 +6,27 @@
 //  Copyright © 2016 brad huntington. All rights reserved.
 //
 
+import SpriteKit
 
-class Isis: Enemy {
-    let normaTexture = SKTexture (imageNamed: "spr_player_celebrate")
+class Isis : Enemy {
+    let normTexture = SKTexture (imageNamed: "spr_player_celebrate")
     let rageTexture = SKTexture (imageNamed: "spr_player_die")
-    var texture = normaTexture
-    override var maxHealth = 250
     var enrageSpeed = 13
-    override var enragePercent = 0.10
-    override var value = 5
     
     init (position: CGPoint){
-        super.init(position,normaTexture)
+        super.init(position: position, texture: normTexture)
+        self.value = 5
+        self.enragePercent = 0.10
+        self.maxHealth = 250
+        self.currentHealth = maxHealth
     }
     
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     override func enrage(){
         super.enrage()
         self.texture = rageTexture
-        self.speed = enrageSpeed
+        self.mSpeed = enrageSpeed
     }
 }

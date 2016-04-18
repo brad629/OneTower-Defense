@@ -5,25 +5,30 @@
 //  Created by bradley huntington on 4/8/16.
 //  Copyright © 2016 brad huntington. All rights reserved.
 //
+import SpriteKit
 
 class Turtle: Enemy {
-    let normaTexture = SKTexture (imageNamed: "spr_turtle_sneeze")
+    let normTexture = SKTexture (imageNamed: "spr_turtle_sneeze")
     let rageTexture = SKTexture (imageNamed: "spr_turtle_spikes")
-    var texture = normaTexture
-    override var maxHealth = 600
-    override var speed = 2
     let enrageSpeed = 3
-    override var enragePercent = 0.10
-    override var value = 10
     
     init (position: CGPoint){
-        super.init(position, normaTexture)
+        super.init(position: position, texture: normTexture)
+        self.value = 10
+        self.enragePercent = 0.10
+        self.maxHealth = 600
+        self.mSpeed = 2
+        self.currentHealth = maxHealth
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
     }
     
     override func enrage(){
         super.enrage()
         self.texture = rageTexture
-        self.speed = enrageSpeed
+        self.mSpeed = enrageSpeed
     }
     
     override func takeDamage (damage : Double) -> Bool {

@@ -13,14 +13,14 @@ class Enemy : SKSpriteNode {
     var currentHealth:Double
     var enragePercent = 0.25
     var enraged = false
-    var speeds = 10
+    var mSpeed = 10
     var value = 1
 
     //var resistance = nil
     
     init (position: CGPoint, texture: SKTexture){
         currentHealth = maxHealth
-        let texture = texture
+        var texture = texture
         super.init(texture: texture,color:SKColor(),size:texture.size())
         self.position = position
     }

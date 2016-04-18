@@ -8,14 +8,16 @@
 
 import SpriteKit
 class GameScene: SKScene {
+    
     var delta: NSTimeInterval = 1/60
-
     var turretCounter = 1
     var selectedNode = SKNode()
     var inputHelper = InputHelper()
     var nodeNames:[String] = []
     var turretName = "turret"
     var wallNodes: [Wall] = []
+    var bobby: BulletBob
+    
     override func didMoveToView(view: SKView) {
         /* Setup your scene here */
         let background = SKSpriteNode(imageNamed:"spr_Asphalt-Stone-Background")
@@ -231,9 +233,6 @@ class GameScene: SKScene {
         }
     }
 
-
-
-}
 //}
 
 
