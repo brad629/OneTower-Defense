@@ -15,6 +15,7 @@ class Turret : SKSpriteNode {
     var slow = 0
     var snare = false
     var areaOfEffect = 0
+    var range = CGFloat(100)
     
     
     init (position: CGPoint){
@@ -38,6 +39,10 @@ class Turret : SKSpriteNode {
     }
     
     func shoot(target: Enemy){
+        let opposite = target.position.y - self.position.y
+        let adjacent = target.position.x - self.position.x
+        self.zRotation = atan2(opposite, adjacent)
+        
        // var bullet = Bullet(position: self.position, damage: damage, slow: slow, snare: snare, areaOfEffect: snare, target: target)
     }
 }

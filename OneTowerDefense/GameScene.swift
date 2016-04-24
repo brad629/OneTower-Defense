@@ -13,10 +13,11 @@ class GameScene: SKScene {
     var turretCounter = 1
     var selectedNode = SKNode()
     var inputHelper = InputHelper()
-    var nodeNames:[String] = []
+    var turretNames:[Turret] = []
     var turretName = "turret"
     var wallNodes: [Wall] = []
-    var bobby: BulletBob
+    var bobby: BulletBob?
+    var enemyList: [Enemy] = []
     
     override func didMoveToView(view: SKView) {
         /* Setup your scene here */
@@ -26,18 +27,20 @@ class GameScene: SKScene {
         background.zPosition=0
         background.position = CGPointMake(frame.midX,frame.midY)
         self.addChild(background)
+        
         let bobby = BulletBob(position:CGPointMake((frame.midX*0.875),(frame.midY + 1/2*frame.midY + 1/4*frame.midY )))
         bobby.xScale = 0.5
         bobby.yScale = 0.5
         bobby.zPosition = 3
+        
         self.addChild(bobby)
+        enemyList.append(bobby)
         
         let turret = Turret(position:CGPointMake((frame.maxX*0.65),(frame.midY + 1/2*frame.midY + 1/4*frame.midY )))
         turret.xScale = 0.5
         turret.yScale = 0.5
         turret.zPosition=2
         turret.name = "turret"
-        nodeNames.append("turret")
         self.addChild(turret)
         
         let label = SKLabelNode(text: "hello")
@@ -162,8 +165,20 @@ class GameScene: SKScene {
         
     }
     override func update(currentTime: NSTimeInterval) {
-        bobby.updateDelta(delta)
-        
+        for turret in turretNames{
+            for enemy in enemyList{
+                let rise = abs(turret.position.y - enemy.position.y)
+                let run = abs(turret.position.x - enemy.position.x)
+                let distance = sqrt((rise*rise)+(run*run))
+                print(distance)
+                if distance < turret.range{
+                    turret.shoot(enemy)
+                }
+            }
+            
+        }
+        //bobby!.updateDelta(delta)
+        print("farts")
     }
     override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
         let touch = touches.first!
@@ -174,6 +189,7 @@ class GameScene: SKScene {
         if nodeAtPoint(inputHelper.touchLocation).name == "turret"{
             
             selectedNode = nodeAtPoint(inputHelper.touchLocation)
+            
         }
         //print(nodeAtPoint(inputHelper.touchLocation).name)
         //print(nodeAtPoint(inputHelper.touchLocation).position)
@@ -203,7 +219,7 @@ class GameScene: SKScene {
                 turret.yScale = 0.25
                 turret.zPosition=2
                 turret.name = "turret \(turretCounter)"
-                nodeNames.append("turret\(turretCounter)")
+                turretNames.append(turret)
                 self.addChild(turret)
                 node.hasTurret = true
                 turretCounter += 1
