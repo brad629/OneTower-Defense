@@ -29,12 +29,13 @@ class Turret : SKSpriteNode {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func prepareToShoot(target:Enemy){
+    func prepareToShoot(target:Enemy) -> Bullet?{
         if fireRate - timeSinceLastShot <= 0 {
-            shoot(target)
+           return shoot(target)
         }
         else {
             timeSinceLastShot++
+            return nil
         }
     }
     

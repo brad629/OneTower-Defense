@@ -20,6 +20,7 @@ class GameScene: SKScene {
     
     override func didMoveToView(view: SKView) {
         /* Setup your scene here */
+        
         let background = SKSpriteNode(imageNamed:"spr_Asphalt-Stone-Background")
         background.xScale = 1
         background.yScale = 1
@@ -160,7 +161,10 @@ class GameScene: SKScene {
         let wall25 =  Wall(position: CGPointMake((frame.midX),wall24.frame.maxY-((1.5)*wall2.frame.size.height)))
         self.addChild(wall25)
         wallNodes.append(wall25)
-        
+        let base = SKSpriteNode(imageNamed: "spr_treasure")
+        base.zPosition = 3
+        base.position=(CGPointMake((frame.midX*1.125),wall24.frame.maxY-((1.5)*wall2.frame.size.height)))
+        self.addChild(base)
         
     }
     override func update(currentTime: NSTimeInterval) {
@@ -171,13 +175,14 @@ class GameScene: SKScene {
                 let distance = sqrt((rise*rise)+(run*run))
                 print(distance)
                 if distance < turret.range{
-                    print("pew pew pew")
-                    var bullet = turret.shoot(enemy)
-                    bullet.xScale = 0.25
-                    bullet.yScale = 0.25
-                    bullet.position = turret.position
-                    self.addChild(bullet)
-                    
+                    if let bullet = turret.prepareToShoot(enemy) {
+                        print("pew pew pew")
+                        bullet.xScale = 0.25
+                        bullet.yScale = 0.25
+                        bullet.position = turret.position
+                        self.addChild(bullet)
+
+                }
                 }
             }
             
