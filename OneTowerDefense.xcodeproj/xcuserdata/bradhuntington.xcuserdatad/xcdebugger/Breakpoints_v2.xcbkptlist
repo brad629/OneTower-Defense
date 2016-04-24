@@ -26,11 +26,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "OneTowerDefense/Enemies/Turret.swift"
-            timestampString = "483220863.599003"
+            timestampString = "483222227.834901"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "46"
-            endingLineNumber = "46"
+            startingLineNumber = "47"
+            endingLineNumber = "47"
             landmarkName = "shoot(_:)"
             landmarkType = "5">
          </BreakpointContent>

@@ -38,11 +38,14 @@ class Turret : SKSpriteNode {
         }
     }
     
-    func shoot(target: Enemy){
+    func shoot(target: Enemy) -> Bullet{
         let opposite = target.position.y - self.position.y
         let adjacent = target.position.x - self.position.x
         self.zRotation = atan2(opposite, adjacent)
         
-       // var bullet = Bullet(position: self.position, damage: damage, slow: slow, snare: snare, areaOfEffect: snare, target: target)
+        
+        var bullet = Bullet(position: self.position, damage: damage, slow: slow, snare: snare, areaOfEffect: areaOfEffect, target: target)
+            bullet.zPosition = 4
+            return bullet
     }
 }

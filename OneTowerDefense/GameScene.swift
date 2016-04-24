@@ -14,7 +14,6 @@ class GameScene: SKScene {
     var selectedNode = SKNode()
     var inputHelper = InputHelper()
     var turretNames:[Turret] = []
-    var turretName = "turret"
     var wallNodes: [Wall] = []
     var bobby: BulletBob?
     var enemyList: [Enemy] = []
@@ -172,13 +171,18 @@ class GameScene: SKScene {
                 let distance = sqrt((rise*rise)+(run*run))
                 print(distance)
                 if distance < turret.range{
-                    turret.shoot(enemy)
+                    print("pew pew pew")
+                    var bullet = turret.shoot(enemy)
+                    bullet.xScale = 0.25
+                    bullet.yScale = 0.25
+                    bullet.position = turret.position
+                    self.addChild(bullet)
+                    
                 }
             }
             
         }
         //bobby!.updateDelta(delta)
-        print("farts")
     }
     override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
         let touch = touches.first!
