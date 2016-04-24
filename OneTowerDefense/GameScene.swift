@@ -181,6 +181,7 @@ class GameScene: SKScene {
                         bullet.yScale = 0.25
                         bullet.position = turret.position
                         self.addChild(bullet)
+                        break
 
                 }
                 }
@@ -190,6 +191,7 @@ class GameScene: SKScene {
         //bobby!.updateDelta(delta)
     }
     override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
+        // if in turret list put upgrade menue 
         let touch = touches.first!
         inputHelper.touchLocation = touch.locationInNode(self)
         inputHelper.nrTouches += touches.count
