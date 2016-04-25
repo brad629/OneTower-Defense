@@ -11,7 +11,7 @@ import SpriteKit
 class Isis : Enemy {
     let normTexture = SKTexture (imageNamed: "spr_player_celebrate")
     let rageTexture = SKTexture (imageNamed: "spr_player_die")
-    var enrageSpeed = 13
+    var enrageSpeed = CGFloat(13)
     
     init (position: CGPoint){
         super.init(position: position, texture: normTexture)

@@ -10,7 +10,7 @@ import SpriteKit
 class Turtle: Enemy {
     let normTexture = SKTexture (imageNamed: "spr_turtle_sneeze")
     let rageTexture = SKTexture (imageNamed: "spr_turtle_spikes")
-    let enrageSpeed = 3
+    let enrageSpeed = CGFloat(3)
     
     init (position: CGPoint){
         super.init(position: position, texture: normTexture)

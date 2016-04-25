@@ -17,9 +17,16 @@ class GameScene: SKScene {
     var wallNodes: [Wall] = []
     var bobby: BulletBob?
     var enemyList: [Enemy] = []
+    var enemyTypes: [Enemy] = []
+    let base = SKSpriteNode(imageNamed: "spr_treasure")
+    var health = 5
+    var myLabel = SKLabelNode(fontNamed: "Arial")
+    var healthstring = "/5"
+
     
     override func didMoveToView(view: SKView) {
         /* Setup your scene here */
+       
         
         let background = SKSpriteNode(imageNamed:"spr_Asphalt-Stone-Background")
         background.xScale = 1
@@ -161,15 +168,22 @@ class GameScene: SKScene {
         let wall25 =  Wall(position: CGPointMake((frame.midX),wall24.frame.maxY-((1.5)*wall2.frame.size.height)))
         self.addChild(wall25)
         wallNodes.append(wall25)
-        let base = SKSpriteNode(imageNamed: "spr_treasure")
         base.zPosition = 3
         base.position=(CGPointMake((frame.midX*1.125),wall24.frame.maxY-((1.5)*wall2.frame.size.height)))
         self.addChild(base)
+        myLabel.text = "5/5"
+        myLabel.fontSize = 20
+        myLabel.fontColor = UIColor.blackColor()
+        myLabel.position = base.position
+        myLabel.zPosition=5
+        
+        self.addChild(myLabel)
         
     }
     override func update(currentTime: NSTimeInterval) {
         for turret in turretNames{
             for enemy in enemyList{
+                print("farts")
                 let rise = abs(turret.position.y - enemy.position.y)
                 let run = abs(turret.position.x - enemy.position.x)
                 let distance = sqrt((rise*rise)+(run*run))
@@ -187,6 +201,16 @@ class GameScene: SKScene {
                 }
             }
             
+        }
+        for (index, enemy) in enemyList.enumerate(){
+            
+            enemy.updateDelta(currentTime)
+            if base.intersectsNode(enemy){
+                enemyList.removeAtIndex(index)
+                enemy.removeFromParent()
+                health = health - 1
+                myLabel.text = String(health)  + "/5"
+            }
         }
         //bobby!.updateDelta(delta)
     }

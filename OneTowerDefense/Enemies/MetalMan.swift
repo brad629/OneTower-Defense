@@ -10,7 +10,7 @@ import SpriteKit
 class MetalMan : Enemy {
     let normTexture = SKTexture (imageNamed: "spr_sparky_idle")
     let rageTexture = SKTexture (imageNamed: "spr_sparky_electrocute")
-    var enrageSpeed = 8
+    var enrageSpeed = CGFloat(8)
     
     init (position: CGPoint){
         super.init(position: position, texture: normTexture)

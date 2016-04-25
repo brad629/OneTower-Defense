@@ -13,7 +13,7 @@ class Enemy : SKSpriteNode {
     var currentHealth:Double
     var enragePercent = 0.25
     var enraged = false
-    var mSpeed = 10
+    var mSpeed = CGFloat(15)
     var value = 1
 
     //var resistance = nil
@@ -49,10 +49,10 @@ class Enemy : SKSpriteNode {
         enraged = true
     }
      func updateDelta(delta :NSTimeInterval){
-        if position.y < 370 && position.x > 580  {
-            position.x = position.x - speed
+        if position.y < 370 && position.x < 580  {
+            position.x = position.x + mSpeed
         }else{
-            position.y = position.y - speed
+            position.y = position.y - mSpeed
         }
 }
 }
