@@ -182,7 +182,7 @@ class GameScene: SKScene {
     }
     override func update(currentTime: NSTimeInterval) {
         for turret in turretNames{
-            for enemy in enemyList{
+            for (index2, enemy) in enemyList.enumerate(){
                 print("farts")
                 let rise = abs(turret.position.y - enemy.position.y)
                 let run = abs(turret.position.x - enemy.position.x)
@@ -195,6 +195,11 @@ class GameScene: SKScene {
                         bullet.yScale = 0.25
                         bullet.position = turret.position
                         self.addChild(bullet)
+                        enemy.maxHealth = enemy.maxHealth - turret.damage
+                        if enemy.maxHealth <= 0{
+                            enemy.removeFromParent()
+                            enemyList.removeAtIndex(index2)
+                        }
                         break
 
                 }
