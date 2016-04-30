@@ -20,7 +20,8 @@ class GameScene: SKScene {
     var enemyTypes: [Enemy] = []
     let base = SKSpriteNode(imageNamed: "spr_treasure")
     var health = 5
-    var myLabel = SKLabelNode(fontNamed: "Arial")
+    var lifeLabel = SKLabelNode(fontNamed: "Arial")
+    var lifeMinus = SKLabelNode(fontNamed: "")
     var healthstring = "/5"
 
     
@@ -171,18 +172,19 @@ class GameScene: SKScene {
         base.zPosition = 3
         base.position=(CGPointMake((frame.midX*1.125),wall24.frame.maxY-((1.5)*wall2.frame.size.height)))
         self.addChild(base)
-        myLabel.text = "5/5"
-        myLabel.fontSize = 20
-        myLabel.fontColor = UIColor.blackColor()
-        myLabel.position = base.position
-        myLabel.zPosition=5
+        lifeLabel.text = "5/5"
+        lifeLabel.fontSize = 20
+        lifeLabel.fontColor = UIColor.blackColor()
+        lifeLabel.position = base.position
+        lifeLabel.zPosition=5
         
         self.addChild(myLabel)
         
     }
     override func update(currentTime: NSTimeInterval) {
+// loop through turret list and enemy list to see if any are in range of the turrets
         for turret in turretNames{
-            for (index2, enemy) in enemyList.enumerate(){
+            for (index, enemy) in enemyList.enumerate(){
                 print("farts")
                 let rise = abs(turret.position.y - enemy.position.y)
                 let run = abs(turret.position.x - enemy.position.x)
@@ -198,7 +200,7 @@ class GameScene: SKScene {
                         enemy.maxHealth = enemy.maxHealth - turret.damage
                         if enemy.maxHealth <= 0{
                             enemy.removeFromParent()
-                            enemyList.removeAtIndex(index2)
+                            enemyList.removeAtIndex(index)
                         }
                         break
 
@@ -210,6 +212,7 @@ class GameScene: SKScene {
         for (index, enemy) in enemyList.enumerate(){
             
             enemy.updateDelta(currentTime)
+            // if enemy intersects base - 1 life
             if base.intersectsNode(enemy){
                 enemyList.removeAtIndex(index)
                 enemy.removeFromParent()
