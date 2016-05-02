@@ -21,6 +21,7 @@ class GameScene: SKScene {
     let base = SKSpriteNode(imageNamed: "spr_treasure")
     var health = 5
     var lifeLabel = SKLabelNode(fontNamed: "Arial")
+    var gameOver = SKLabelNode(fontNamed: "Arial")
     var lifeMinus = SKLabelNode(fontNamed: "")
     var healthstring = "/5"
     let splash = SKSpriteNode(imageNamed:"spr_Asphalt-Stone-Background")
@@ -182,8 +183,12 @@ class GameScene: SKScene {
         lifeLabel.fontSize = 20
         lifeLabel.fontColor = UIColor.blackColor()
         lifeLabel.position = base.position
+<<<<<<< HEAD
         lifeLabel.zPosition=4
         
+=======
+        lifeLabel.zPosition=5
+>>>>>>> origin/master
         self.addChild(lifeLabel)
         
         splash.xScale = 1
@@ -251,6 +256,14 @@ class GameScene: SKScene {
                 enemy.removeFromParent()
                 health = health - 1
                 lifeLabel.text = String(health)  + "/5"
+                if health <= 0 {
+                    gameOver.text = "GAME OVER"
+                    gameOver.fontSize = 200
+                    gameOver.fontColor = UIColor.blackColor()
+                    gameOver.position = base.position
+                    gameOver.zPosition = 10
+                    self.addChild(gameOver)
+                }
             }
         }
         //bobby!.updateDelta(delta)
