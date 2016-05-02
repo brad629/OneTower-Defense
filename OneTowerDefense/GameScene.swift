@@ -200,6 +200,7 @@ class GameScene: SKScene {
                         enemy.maxHealth = enemy.maxHealth - turret.damage
                         if enemy.maxHealth <= 0{
                             enemy.removeFromParent()
+                            //add enemy.score + player score
                             enemyList.removeAtIndex(index)
                         }
                         break
