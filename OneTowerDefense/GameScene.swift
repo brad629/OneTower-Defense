@@ -183,12 +183,9 @@ class GameScene: SKScene {
         lifeLabel.fontSize = 20
         lifeLabel.fontColor = UIColor.blackColor()
         lifeLabel.position = base.position
-<<<<<<< HEAD
         lifeLabel.zPosition=4
         
-=======
         lifeLabel.zPosition=5
->>>>>>> origin/master
         self.addChild(lifeLabel)
         
         splash.xScale = 1
