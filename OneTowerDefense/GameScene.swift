@@ -236,6 +236,11 @@ class GameScene: SKScene {
                             enemy.removeFromParent()
                             //add enemy.score + player score
                             enemyList.removeAtIndex(index)
+                            //demo stuff to see functionality
+                           //enemy.position = CGPointMake((frame.midX*0.875),(frame.midY + 1/2*frame.midY + 1/4*frame.midY ))
+                          //  enemy.maxHealth = 100
+                            //addChild(enemy)
+                          //  enemyList.append(enemy)
                         }
                         break
 
