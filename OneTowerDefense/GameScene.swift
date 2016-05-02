@@ -23,6 +23,12 @@ class GameScene: SKScene {
     var lifeLabel = SKLabelNode(fontNamed: "Arial")
     var lifeMinus = SKLabelNode(fontNamed: "")
     var healthstring = "/5"
+    let splash = SKSpriteNode(imageNamed:"spr_Asphalt-Stone-Background")
+    let connerSplash = SKSpriteNode(imageNamed:"spr_conner")
+    let bradSplash = SKSpriteNode(imageNamed:"spr_brad")
+    let titleSplash = SKSpriteNode(imageNamed:"spr_tower")
+    let demoSplash = SKSpriteNode(imageNamed:"spr_demo")
+
 
     
     override func didMoveToView(view: SKView) {
@@ -176,12 +182,38 @@ class GameScene: SKScene {
         lifeLabel.fontSize = 20
         lifeLabel.fontColor = UIColor.blackColor()
         lifeLabel.position = base.position
-        lifeLabel.zPosition=5
+        lifeLabel.zPosition=4
         
         self.addChild(lifeLabel)
         
+        splash.xScale = 1
+        splash.yScale = 1
+        splash.zPosition=5
+        splash.position = CGPointMake(frame.midX,frame.midY)
+        self.addChild(splash)
+        bradSplash.xScale = 0.75
+        bradSplash.yScale = 0.75
+        bradSplash.zPosition=6
+        bradSplash.position = CGPointMake(frame.midX,frame.midY+((frame.size.height)*(1/3))+bradSplash.size.height)
+        self.addChild(bradSplash)
+        connerSplash.xScale = 0.75
+        connerSplash.yScale = 0.75
+        connerSplash.zPosition=6
+        connerSplash.position = CGPointMake(frame.midX,frame.midY+((frame.size.height)*(1/3)-bradSplash.size.height))
+        self.addChild(connerSplash)
+        titleSplash.xScale = 1
+        titleSplash.yScale = 1
+        titleSplash.zPosition=6
+        titleSplash.position = CGPointMake(frame.midX,frame.midY+((frame.size.height)*(1/3)))
+        self.addChild(titleSplash)
+        demoSplash.xScale = 1
+        demoSplash.yScale = 1
+        demoSplash.zPosition=6
+        demoSplash.position = CGPointMake(frame.midX,frame.midY)
+        self.addChild(demoSplash)
     }
     override func update(currentTime: NSTimeInterval) {
+        if splash.hidden{
 // loop through turret list and enemy list to see if any are in range of the turrets
         for turret in turretNames{
             for (index, enemy) in enemyList.enumerate(){
@@ -223,7 +255,13 @@ class GameScene: SKScene {
         }
         //bobby!.updateDelta(delta)
     }
+}
     override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
+        splash.hidden = true
+        demoSplash.hidden = true
+        bradSplash.hidden = true
+        connerSplash.hidden = true
+        titleSplash.hidden = true
         // if in turret list put upgrade menue 
         let touch = touches.first!
         inputHelper.touchLocation = touch.locationInNode(self)
