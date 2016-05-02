@@ -178,7 +178,7 @@ class GameScene: SKScene {
         lifeLabel.position = base.position
         lifeLabel.zPosition=5
         
-        self.addChild(myLabel)
+        self.addChild(lifeLabel)
         
     }
     override func update(currentTime: NSTimeInterval) {
@@ -200,6 +200,7 @@ class GameScene: SKScene {
                         enemy.maxHealth = enemy.maxHealth - turret.damage
                         if enemy.maxHealth <= 0{
                             enemy.removeFromParent()
+                            //add enemy.score + player score
                             enemyList.removeAtIndex(index)
                         }
                         break
@@ -217,7 +218,7 @@ class GameScene: SKScene {
                 enemyList.removeAtIndex(index)
                 enemy.removeFromParent()
                 health = health - 1
-                myLabel.text = String(health)  + "/5"
+                lifeLabel.text = String(health)  + "/5"
             }
         }
         //bobby!.updateDelta(delta)
