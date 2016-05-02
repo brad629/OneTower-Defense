@@ -21,6 +21,7 @@ class GameScene: SKScene {
     let base = SKSpriteNode(imageNamed: "spr_treasure")
     var health = 5
     var lifeLabel = SKLabelNode(fontNamed: "Arial")
+    var gameOver = SKLabelNode(fontNamed: "Arial")
     var lifeMinus = SKLabelNode(fontNamed: "")
     var healthstring = "/5"
 
@@ -177,8 +178,7 @@ class GameScene: SKScene {
         lifeLabel.fontColor = UIColor.blackColor()
         lifeLabel.position = base.position
         lifeLabel.zPosition=5
-        
-        self.addChild(myLabel)
+        self.addChild(lifeLabel)
         
     }
     override func update(currentTime: NSTimeInterval) {
@@ -217,7 +217,15 @@ class GameScene: SKScene {
                 enemyList.removeAtIndex(index)
                 enemy.removeFromParent()
                 health = health - 1
-                myLabel.text = String(health)  + "/5"
+                lifeLabel.text = String(health)  + "/5"
+                if health <= 0 {
+                    gameOver.text = "GAME OVER"
+                    gameOver.fontSize = 200
+                    gameOver.fontColor = UIColor.blackColor()
+                    gameOver.position = base.position
+                    gameOver.zPosition = 10
+                    self.addChild(gameOver)
+                }
             }
         }
         //bobby!.updateDelta(delta)
