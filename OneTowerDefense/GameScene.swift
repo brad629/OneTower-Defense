@@ -37,6 +37,7 @@ class GameScene: SKScene {
     var enemyInt = 0
     var updatesSinceLastSpawn = 0
     var currentEnemy = 0
+    var start = false
 
 
     
@@ -236,14 +237,13 @@ class GameScene: SKScene {
 // loop through turret list and enemy list to see if any are in range of the turrets
         for turret in turretNames{
             for (index, enemy) in enemyList.enumerate(){
-               // print("farts")
                 let rise = abs(turret.position.y - enemy.position.y)
                 let run = abs(turret.position.x - enemy.position.x)
                 let distance = sqrt((rise*rise)+(run*run))
-                print(distance)
+              //  print(distance)
                 if distance < turret.range{
                     if let bullet = turret.prepareToShoot(enemy) {
-                        print("pew pew pew")
+                        //print("pew pew pew")
                         bullet.xScale = 0.25
                         bullet.yScale = 0.25
                         bullet.position = turret.position
@@ -254,6 +254,7 @@ class GameScene: SKScene {
                             //add enemy.score + player score
                             enemyList.removeAtIndex(index)
                             enemyInt = enemyInt - 1
+                            currentEnemy = currentEnemy - 1
                             //demo stuff to see functionality
                           
                         }
@@ -263,13 +264,21 @@ class GameScene: SKScene {
                 }
             }
             
-        }
+            }
             
-        if updatesSinceLastSpawn >= 100 {
+           if start == true && enemyList[currentEnemy].name == "enemy9"{
+            start = false
+            }
+        if updatesSinceLastSpawn >= 25 && start == true {
+            
+            print("current enemy \(currentEnemy)")
+            print("current enemy \(enemyList[currentEnemy])")
+            print("enemy int \(enemyInt)")
             enemyList[currentEnemy].hidden = false
             updatesSinceLastSpawn = 0
             currentEnemy = currentEnemy + 1
             enemyInt = enemyInt + 1
+            
         }else{
             updatesSinceLastSpawn = updatesSinceLastSpawn + 1
         }
@@ -280,6 +289,7 @@ class GameScene: SKScene {
                 // if enemy intersects base - 1 life
                 if base.intersectsNode(enemy){
                     enemyInt = enemyInt - 1
+                    currentEnemy = currentEnemy - 1
                     enemyList.removeAtIndex(index)
                     enemy.removeFromParent()
                     health = health - 1
@@ -313,14 +323,18 @@ class GameScene: SKScene {
         inputHelper.hasTapped = true
         print(nodeAtPoint(inputHelper.touchLocation))
         if (nodeAtPoint(inputHelper.touchLocation).name == "startWave"){
+            start = true
             for(var i = 0; i<10;i++){
                 var enemySpawn = BulletBob(position: CGPointMake((frame.midX*0.875),frame.maxY))
                 enemySpawn.name = "enemy"+String(i)
+                print(enemySpawn.name)
                 enemyList.append(enemySpawn)
                 enemySpawn.zPosition = 3
+                enemySpawn.xScale = 0.5
+                enemySpawn.yScale = 0.5
+                
                 addChild(enemySpawn)
                 enemySpawn.hidden = true
-                print("farts /(i)")
                 
             }
         
