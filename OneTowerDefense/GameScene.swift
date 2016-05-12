@@ -17,6 +17,7 @@ class GameScene: SKScene {
     var delta: NSTimeInterval = 1/60
     var turretCounter = 1
     var selectedNode = SKNode()
+    var selectedUpgrade = SKNode()
     var inputHelper = InputHelper()
     var enemyList:[Enemy] = []
     var turretNames:[Turret] = []
@@ -38,6 +39,9 @@ class GameScene: SKScene {
     var updatesSinceLastSpawn = 0
     var currentEnemy = 0
     var start = false
+    let upSpeed = SKSpriteNode(imageNamed:"upSpeed")
+    let upRange = SKSpriteNode(imageNamed:"upRange")
+    let upAttack = SKSpriteNode(imageNamed:"upAttack")
 
 
     
@@ -69,7 +73,6 @@ class GameScene: SKScene {
         turret.zPosition=2
         turret.name = "mainTurret"
         self.addChild(turret)
-        let upAttack = SKSpriteNode(imageNamed:"upAttack")
         upAttack.xScale = 0.75
         upAttack.alpha = 0.5
         upAttack.yScale = 0.75
@@ -77,7 +80,6 @@ class GameScene: SKScene {
         upAttack.position = CGPointMake((frame.maxX*0.65)-20,(frame.midY + 1/2*frame.midY + 1/4*frame.midY-turret.frame.height))
         self.addChild(upAttack)
         
-        let upSpeed = SKSpriteNode(imageNamed:"upSpeed")
         upSpeed.xScale = 0.75
         upSpeed.yScale = 0.75
         upSpeed.alpha = 0.5
@@ -86,7 +88,6 @@ class GameScene: SKScene {
         upSpeed.position = CGPointMake((frame.maxX*0.65-20),(frame.midY + 1/2*frame.midY + 1/4*frame.midY-(2*turret.frame.height)))
         self.addChild(upSpeed)
         
-        let upRange = SKSpriteNode(imageNamed:"upRange")
         upRange.xScale = 0.75
         upRange.yScale = 0.75
         upRange.alpha = 0.5
@@ -371,10 +372,15 @@ class GameScene: SKScene {
             selectedNode = nodeAtPoint(inputHelper.touchLocation)
             
         }
+        //parse name of node to check if its a turret
         let s = nodeAtPoint(inputHelper.touchLocation).name
 
         if s != nil && s!.substringWithRange(Range<String.Index>(start:(s?.startIndex)!,end: (s?.endIndex.advancedBy(-2))!)) == "turret"{
             selectedNode = nodeAtPoint(inputHelper.touchLocation)
+            upAttack.alpha = 1
+            upSpeed.alpha = 1
+            upRange.alpha = 1
+            
             
 //            let s = nodeAtPoint(inputHelper.touchLocation).name
 //            let r = s?.endIndex.advancedBy(-1)
