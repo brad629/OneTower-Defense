@@ -73,7 +73,7 @@ class GameScene: SKScene {
         turret.xScale = 0.5
         turret.yScale = 0.5
         turret.zPosition=2
-        turret.name = "turret"
+        turret.name = "mainTurret"
         self.addChild(turret)
         
         let label = SKLabelNode(text: "hello")
@@ -267,13 +267,14 @@ class GameScene: SKScene {
             }
             
            if start == true && enemyList[currentEnemy].name == "enemy9"{
+            
             start = false
             }
         if updatesSinceLastSpawn >= 25 && start == true {
             
-            print("current enemy \(currentEnemy)")
-            print("current enemy \(enemyList[currentEnemy])")
-            print("enemy int \(enemyInt)")
+            //print("current enemy \(currentEnemy)")
+            //print("current enemy \(enemyList[currentEnemy])")
+            //print("enemy int \(enemyInt)")
             enemyList[currentEnemy].hidden = false
             updatesSinceLastSpawn = 0
             currentEnemy = currentEnemy + 1
@@ -321,13 +322,13 @@ class GameScene: SKScene {
         inputHelper.touchLocation = touch.locationInNode(self)
         inputHelper.nrTouches += touches.count
         inputHelper.hasTapped = true
-        print(nodeAtPoint(inputHelper.touchLocation))
+        //print(nodeAtPoint(inputHelper.touchLocation))
         if (nodeAtPoint(inputHelper.touchLocation).name == "startWave"){
             start = true
             for(var i = 0; i<10;i++){
                 var enemySpawn = BulletBob(position: CGPointMake((frame.midX*0.875),frame.maxY))
                 enemySpawn.name = "enemy"+String(i)
-                print(enemySpawn.name)
+                //print(enemySpawn.name)
                 enemyList.append(enemySpawn)
                 enemySpawn.zPosition = 3
                 enemySpawn.xScale = 0.5
@@ -339,22 +340,39 @@ class GameScene: SKScene {
             }
         
         }
-        if nodeAtPoint(inputHelper.touchLocation).name == "turret"{
+        if nodeAtPoint(inputHelper.touchLocation).name == "mainTurret"{
             
             selectedNode = nodeAtPoint(inputHelper.touchLocation)
             
         }
+        let s = nodeAtPoint(inputHelper.touchLocation).name
+
+        if s != nil && s!.substringWithRange(Range<String.Index>(start:(s?.startIndex)!,end: (s?.endIndex.advancedBy(-2))!)) == "turret"{
+            selectedNode = nodeAtPoint(inputHelper.touchLocation)
+            
+//            let s = nodeAtPoint(inputHelper.touchLocation).name
+//            let r = s?.endIndex.advancedBy(-1)
+//            let substring = s![r!]
+//            print(substring)
+//            if String(substring) == "turret "{
+                print("farts")
+            
+            
+          
+        }
+        
+       
         //print(nodeAtPoint(inputHelper.touchLocation).name)
         //print(nodeAtPoint(inputHelper.touchLocation).position)
     }
-    
+
     override func touchesMoved(touches: Set<UITouch>, withEvent event: UIEvent?) {
-        if selectedNode.name == "turret"{
+        if selectedNode.name == "mainTurret"{
 
         let touch = touches.first!
         
         inputHelper.touchLocation = touch.locationInNode(self)
-        if selectedNode.name == "turret"{
+        if selectedNode.name == "mainTurret"{
             // we may be able to use a boolean here to make it follow the users finger better.
         selectedNode.position = inputHelper.touchLocation
             

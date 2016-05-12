@@ -12,7 +12,7 @@ class BulletBob: Enemy {
     init (position: CGPoint){
         let texture = SKTexture(imageNamed: "spr_rocket")
         super.init(position: position,texture: texture)
-        self.mSpeed = 5
+        self.mSpeed = 10
     }
 
     required init?(coder aDecoder: NSCoder) {
