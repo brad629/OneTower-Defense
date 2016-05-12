@@ -39,6 +39,7 @@ class GameScene: SKScene {
     var updatesSinceLastSpawn = 0
     var currentEnemy = 0
     var start = false
+    var selected = false
     let upSpeed = SKSpriteNode(imageNamed:"upSpeed")
     let upRange = SKSpriteNode(imageNamed:"upRange")
     let upAttack = SKSpriteNode(imageNamed:"upAttack")
@@ -73,10 +74,12 @@ class GameScene: SKScene {
         turret.zPosition=2
         turret.name = "mainTurret"
         self.addChild(turret)
+        
         upAttack.xScale = 0.75
         upAttack.alpha = 0.5
         upAttack.yScale = 0.75
         upAttack.zPosition=4
+        upAttack.name = "upAttack"
         upAttack.position = CGPointMake((frame.maxX*0.65)-20,(frame.midY + 1/2*frame.midY + 1/4*frame.midY-turret.frame.height))
         self.addChild(upAttack)
         
@@ -349,7 +352,7 @@ class GameScene: SKScene {
         inputHelper.touchLocation = touch.locationInNode(self)
         inputHelper.nrTouches += touches.count
         inputHelper.hasTapped = true
-        //print(nodeAtPoint(inputHelper.touchLocation))
+        print(nodeAtPoint(inputHelper.touchLocation))
         if (nodeAtPoint(inputHelper.touchLocation).name == "startWave"){
             start = true
             for(var i = 0; i<10;i++){
@@ -376,11 +379,11 @@ class GameScene: SKScene {
         let s = nodeAtPoint(inputHelper.touchLocation).name
 
         if s != nil && s!.substringWithRange(Range<String.Index>(start:(s?.startIndex)!,end: (s?.endIndex.advancedBy(-2))!)) == "turret"{
+            selected = true
             selectedNode = nodeAtPoint(inputHelper.touchLocation)
             upAttack.alpha = 1
             upSpeed.alpha = 1
             upRange.alpha = 1
-            
             
 //            let s = nodeAtPoint(inputHelper.touchLocation).name
 //            let r = s?.endIndex.advancedBy(-1)
@@ -392,12 +395,30 @@ class GameScene: SKScene {
             
           
         }
+        else{
+            upAttack.alpha = 0.5
+            upSpeed.alpha = 0.5
+            upRange.alpha = 0.5
+        }
+    
+       if nodeAtPoint(inputHelper.touchLocation).name == "upAttack" && selected == true{
         
-       
+        let t = selectedNode.name
+        let substring = t!.substringWithRange(Range<String.Index>(start:(t?.startIndex.advancedBy(7))!,end: (t?.endIndex)!))
+        print(turretNames[Int(substring)!-1].damage)
+        turretNames[Int(substring)!-1].damage = turretNames[Int(substring)!-1].damage + 5
+        print(turretNames[Int(substring)!-1].damage)
+        //print(substring)
+        //print(selectedNode)
+        //Turret(selectedNode.damage) = 20
+//
+        }
+        
+     
+
         //print(nodeAtPoint(inputHelper.touchLocation).name)
         //print(nodeAtPoint(inputHelper.touchLocation).position)
     }
-
     override func touchesMoved(touches: Set<UITouch>, withEvent event: UIEvent?) {
         if selectedNode.name == "mainTurret"{
 
