@@ -7,7 +7,12 @@
 //
 
 import SpriteKit
+import AVFoundation
+
 class GameScene: SKScene {
+    
+    var audioPlayer = AVAudioPlayer()
+    var turretSound = NSURL(fileURLWithPath: NSBundle.mainBundle().pathForResource("turretSound" , ofType: "wav")!)
     
     var delta: NSTimeInterval = 1/60
     var turretCounter = 1
@@ -35,7 +40,8 @@ class GameScene: SKScene {
     
     override func didMoveToView(view: SKView) {
         /* Setup your scene here */
-       
+      
+        audioPlayer = try! AVAudioPlayer(contentsOfURL: turretSound, fileTypeHint: "wav")
         
         let background = SKSpriteNode(imageNamed:"spr_Asphalt-Stone-Background")
         background.xScale = 1
@@ -347,6 +353,7 @@ class GameScene: SKScene {
                 turret.name = "turret \(turretCounter)"
                 turretNames.append(turret)
                 self.addChild(turret)
+                audioPlayer.play()
                 node.hasTurret = true
                 turretCounter += 1
             }
