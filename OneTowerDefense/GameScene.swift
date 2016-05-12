@@ -27,6 +27,7 @@ class GameScene: SKScene {
     let base = SKSpriteNode(imageNamed: "spr_treasure")
     var health = 5
     var lifeLabel = SKLabelNode(fontNamed: "Arial")
+    var goldLabel = SKLabelNode(fontNamed: "Arial")
     var gameOver = SKLabelNode(fontNamed: "Arial")
     var lifeMinus = SKLabelNode(fontNamed: "")
     var healthstring = "/5"
@@ -43,7 +44,7 @@ class GameScene: SKScene {
     let upSpeed = SKSpriteNode(imageNamed:"upSpeed")
     let upRange = SKSpriteNode(imageNamed:"upRange")
     let upAttack = SKSpriteNode(imageNamed:"upAttack")
-
+    var gold = 100
 
     
     override func didMoveToView(view: SKView) {
@@ -227,14 +228,23 @@ class GameScene: SKScene {
         base.zPosition = 3
         base.position=(CGPointMake((frame.midX*1.125),wall24.frame.maxY-((1.5)*wall2.frame.size.height)))
         self.addChild(base)
+        
         lifeLabel.text = "5/5"
         lifeLabel.fontSize = 20
         lifeLabel.fontColor = UIColor.blackColor()
         lifeLabel.position = base.position
-        lifeLabel.zPosition=4
         
         lifeLabel.zPosition=5
         self.addChild(lifeLabel)
+        
+        goldLabel.text = "Gold : \(gold)"
+        goldLabel.fontSize = 20
+        goldLabel.fontColor = UIColor.blackColor()
+        goldLabel.position = upAttack.position
+        goldLabel.position.y += 20
+        
+        goldLabel.zPosition=5
+        self.addChild(goldLabel)
         
         splash.xScale = 1
         splash.yScale = 1
@@ -280,6 +290,7 @@ class GameScene: SKScene {
                         self.addChild(bullet)
                         enemy.maxHealth = enemy.maxHealth - turret.damage
                         if enemy.maxHealth <= 0{
+                            gold = gold + enemy.value
                             enemy.removeFromParent()
                             //add enemy.score + player score
                             enemyList.removeAtIndex(index)
@@ -289,7 +300,6 @@ class GameScene: SKScene {
                           
                         }
                         break
-
                 }
                 }
             }
@@ -378,7 +388,7 @@ class GameScene: SKScene {
         //parse name of node to check if its a turret
         let s = nodeAtPoint(inputHelper.touchLocation).name
 
-        if s != nil && s!.substringWithRange(Range<String.Index>(start:(s?.startIndex)!,end: (s?.endIndex.advancedBy(-2))!)) == "turret"{
+        if s != nil && s!.substringWithRange(Range<String.Index>(start:(s?.startIndex)!,end: (s?.endIndex.advancedBy(-2))!)) == "turret" {
             selected = true
             selectedNode = nodeAtPoint(inputHelper.touchLocation)
             upAttack.alpha = 1
@@ -401,13 +411,14 @@ class GameScene: SKScene {
             upRange.alpha = 0.5
         }
     
-       if nodeAtPoint(inputHelper.touchLocation).name == "upAttack" && selected == true{
+       if nodeAtPoint(inputHelper.touchLocation).name == "upAttack" && selected == true && gold >= 10{
         
         let t = selectedNode.name
         let substring = t!.substringWithRange(Range<String.Index>(start:(t?.startIndex.advancedBy(7))!,end: (t?.endIndex)!))
         print(turretNames[Int(substring)!-1].damage)
         turretNames[Int(substring)!-1].damage = turretNames[Int(substring)!-1].damage + 5
         print(turretNames[Int(substring)!-1].damage)
+        gold = gold - 10
         //print(substring)
         //print(selectedNode)
         //Turret(selectedNode.damage) = 20
@@ -436,7 +447,7 @@ class GameScene: SKScene {
     override func touchesEnded(touches: Set<UITouch>, withEvent event: UIEvent?) {
         
         for node in wallNodes{
-            if node.intersectsNode(selectedNode) && node.hasTurret == false{
+            if node.intersectsNode(selectedNode) && node.hasTurret == false && gold >= 50 {
                 selectedNode.position = CGPointMake((frame.maxX*0.65),(frame.midY + 1/2*frame.midY + 1/4*frame.midY ))
                 let turret = Turret(position: node.position)
                 turret.xScale = 0.25
@@ -448,6 +459,7 @@ class GameScene: SKScene {
                 audioPlayer.play()
                 node.hasTurret = true
                 turretCounter += 1
+                gold = gold - 50
             }
             else{
                 
