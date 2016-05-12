@@ -304,6 +304,7 @@ class GameScene: SKScene {
                 var enemySpawn = BulletBob(position: CGPointMake((frame.midX*0.875),frame.maxY))
                 enemySpawn.name = "enemy"+String(i)
                 enemyList.append(enemySpawn)
+                enemySpawn.zPosition = 3
                 addChild(enemySpawn)
                 enemySpawn.hidden = true
                 print("farts /(i)")
