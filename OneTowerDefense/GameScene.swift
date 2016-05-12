@@ -53,13 +53,7 @@ class GameScene: SKScene {
         background.position = CGPointMake(frame.midX,frame.midY)
         self.addChild(background)
         
-        let startButton = SKSpriteNode(imageNamed:"startWave")
-        startButton.xScale = 1
-        startButton.yScale = 1
-        startButton.zPosition=4
-        startButton.name = "startWave"
-        startButton.position = CGPointMake(frame.midX*0.75,base.position.y+(1/16)*frame.maxY)
-        self.addChild(startButton)
+        
 
 //        let bobby = BulletBob(position:CGPointMake((frame.midX*0.875),(frame.midY + 1/2*frame.midY + 1/4*frame.midY )))
 //        bobby.xScale = 0.5
@@ -75,7 +69,39 @@ class GameScene: SKScene {
         turret.zPosition=2
         turret.name = "mainTurret"
         self.addChild(turret)
+        let upAttack = SKSpriteNode(imageNamed:"upAttack")
+        upAttack.xScale = 0.75
+        upAttack.alpha = 0.5
+        upAttack.yScale = 0.75
+        upAttack.zPosition=4
+        upAttack.position = CGPointMake((frame.maxX*0.65)-20,(frame.midY + 1/2*frame.midY + 1/4*frame.midY-turret.frame.height))
+        self.addChild(upAttack)
         
+        let upSpeed = SKSpriteNode(imageNamed:"upSpeed")
+        upSpeed.xScale = 0.75
+        upSpeed.yScale = 0.75
+        upSpeed.alpha = 0.5
+
+        upSpeed.zPosition=4
+        upSpeed.position = CGPointMake((frame.maxX*0.65-20),(frame.midY + 1/2*frame.midY + 1/4*frame.midY-(2*turret.frame.height)))
+        self.addChild(upSpeed)
+        
+        let upRange = SKSpriteNode(imageNamed:"upRange")
+        upRange.xScale = 0.75
+        upRange.yScale = 0.75
+        upRange.alpha = 0.5
+
+        upRange.zPosition=4
+        upRange.position = CGPointMake((frame.maxX*0.65-20),(frame.midY + 1/2*frame.midY + 1/4*frame.midY-3*turret.frame.height))
+        self.addChild(upRange)
+        
+        let startButton = SKSpriteNode(imageNamed:"startWave")
+        startButton.xScale = 1
+        startButton.yScale = 1
+        startButton.zPosition=4
+        startButton.name = "startWave"
+        startButton.position = CGPointMake(frame.midX*0.75,base.position.y+(1/16)*frame.maxY)
+        self.addChild(startButton)
         let label = SKLabelNode(text: "hello")
         label.position = CGPointMake((frame.maxX*0.65),(frame.maxY)-((1/2)*turret.frame.size.height)-label.frame.size.height)
 
