@@ -294,15 +294,24 @@ class GameScene: SKScene {
                         self.addChild(bullet)
                         enemy.maxHealth = enemy.maxHealth - turret.damage
                         if enemy.maxHealth <= 0{
+                            
                             gold = gold + enemy.value
                             goldLabel.text = "Gold : \(gold)"
-
-                            enemy.removeFromParent()
+                            
+                            
                             //add enemy.score + player score
                             enemyList.removeAtIndex(index)
                             enemyInt = enemyInt - 1
                             currentEnemy = currentEnemy - 1
                             //demo stuff to see functionality
+//                            if enemy.name == "enemy9"{
+//                                start = false
+//                                enemyList.removeAll()
+//                                enemyInt = 0
+//                                currentEnemy = 0
+//                            }
+                            enemy.removeFromParent()
+                            
                           
                         }
                         break
@@ -315,9 +324,9 @@ class GameScene: SKScene {
            if start == true && enemyList[currentEnemy].name == "enemy9"{
             
             start = false
-            enemyList.removeAll()
-            enemyInt = 0
-            currentEnemy = 0
+//            enemyList.removeAll()
+//            enemyInt = 0
+//            currentEnemy = 0
 
             
             }
@@ -343,6 +352,12 @@ class GameScene: SKScene {
                     enemyInt = enemyInt - 1
                     currentEnemy = currentEnemy - 1
                     enemyList.removeAtIndex(index)
+//                    if enemy.name == "enemy9"{
+//                        start = false
+//                        enemyList.removeAll()
+//                        enemyInt = 0
+//                        currentEnemy = 0
+//                    }
                     enemy.removeFromParent()
                     health = health - 1
                     lifeLabel.text = String(health)  + "/5"
@@ -354,6 +369,7 @@ class GameScene: SKScene {
                         gameOver.zPosition = 10
                         self.addChild(gameOver)
             }
+                   
                     
            
                 }
@@ -374,9 +390,10 @@ class GameScene: SKScene {
         inputHelper.nrTouches += touches.count
         inputHelper.hasTapped = true
         print(nodeAtPoint(inputHelper.touchLocation))
-        if (nodeAtPoint(inputHelper.touchLocation).name == "startWave"){
-            
+        if (nodeAtPoint(inputHelper.touchLocation).name == "startWave" && start == false){
+            enemyList.removeAll()
             start = true
+            
             for(var i = 0; i<10;i++){
                 var enemySpawn = BulletBob(position: CGPointMake((frame.midX*0.875),frame.maxY))
                 enemySpawn.name = "enemy"+String(i)
