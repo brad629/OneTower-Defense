@@ -13,7 +13,7 @@ class GameScene: SKScene {
     
     var audioPlayer = AVAudioPlayer()
     var turretSound = NSURL(fileURLWithPath: NSBundle.mainBundle().pathForResource("turretSound" , ofType: "wav")!)
-    
+    var spawnTime:NSTimeInterval = 0
     var delta: NSTimeInterval = 1/60
     var turretCounter = 1
     var selectedNode = SKNode()
@@ -264,10 +264,13 @@ class GameScene: SKScene {
         }
         for (index, enemy) in enemyList.enumerate(){
             if enemyInt == 0 {
+                spawnTime = currentTime
                 enemyInt = 1
             enemy.hidden = false
             }
-            
+            if currentTime - spawnTime >= 3{
+                enemy.hidden = false
+            }
             if(enemy.hidden == false){
                 enemy.updateDelta(currentTime)
                 // if enemy intersects base - 1 life

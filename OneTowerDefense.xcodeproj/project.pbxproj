@@ -26,6 +26,7 @@
 		E395B37F1CC0A8FC0065E076 /* Turret.swift in Sources */ = {isa = PBXBuildFile; fileRef = E395B37E1CC0A8FC0065E076 /* Turret.swift */; };
 		E395B3811CC0A9030065E076 /* Bullet.swift in Sources */ = {isa = PBXBuildFile; fileRef = E395B3801CC0A9030065E076 /* Bullet.swift */; };
 		E395B3831CC0AA150065E076 /* Enemy.swift in Sources */ = {isa = PBXBuildFile; fileRef = E395B3821CC0AA150065E076 /* Enemy.swift */; };
+		E3E5D84E1CE44A0E003CC5A6 /* turretSound.wav in Resources */ = {isa = PBXBuildFile; fileRef = E3E5D84D1CE44A0E003CC5A6 /* turretSound.wav */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -71,6 +72,7 @@
 		E395B37E1CC0A8FC0065E076 /* Turret.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Turret.swift; path = Enemies/Turret.swift; sourceTree = "<group>"; };
 		E395B3801CC0A9030065E076 /* Bullet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Bullet.swift; path = Enemies/Bullet.swift; sourceTree = "<group>"; };
 		E395B3821CC0AA150065E076 /* Enemy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Enemy.swift; path = Enemies/Enemy.swift; sourceTree = "<group>"; };
+		E3E5D84D1CE44A0E003CC5A6 /* turretSound.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = turretSound.wav; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -132,6 +134,7 @@
 				BCA882D21CC56A31004383E9 /* Isis.swift */,
 				E33FA23B1CBB443C003E8933 /* AppDelegate.swift */,
 				E33FA23D1CBB443C003E8933 /* GameScene.sks */,
+				E3E5D84D1CE44A0E003CC5A6 /* turretSound.wav */,
 				E33FA23F1CBB443C003E8933 /* GameScene.swift */,
 				E33FA2411CBB443C003E8933 /* GameViewController.swift */,
 				E33FA2431CBB443C003E8933 /* Main.storyboard */,
@@ -267,6 +270,7 @@
 			files = (
 				E33FA23E1CBB443C003E8933 /* GameScene.sks in Resources */,
 				E33FA24A1CBB443C003E8933 /* LaunchScreen.storyboard in Resources */,
+				E3E5D84E1CE44A0E003CC5A6 /* turretSound.wav in Resources */,
 				E33FA2471CBB443C003E8933 /* Assets.xcassets in Resources */,
 				E33FA2451CBB443C003E8933 /* Main.storyboard in Resources */,
 				BC3341661CBB6403009237F3 /* Enemies in Resources */,
