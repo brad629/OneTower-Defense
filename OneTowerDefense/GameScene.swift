@@ -57,6 +57,8 @@ class GameScene: SKScene {
         background.yScale = 1
         background.zPosition=0
         background.position = CGPointMake(frame.midX,frame.midY)
+        background.name = "backGround"
+        
         self.addChild(background)
         
         
@@ -86,6 +88,7 @@ class GameScene: SKScene {
         
         upSpeed.xScale = 0.75
         upSpeed.yScale = 0.75
+        upSpeed.name = "upSpeed"
         upSpeed.alpha = 0.5
 
         upSpeed.zPosition=4
@@ -94,6 +97,7 @@ class GameScene: SKScene {
         
         upRange.xScale = 0.75
         upRange.yScale = 0.75
+        upRange.name = "upRange"
         upRange.alpha = 0.5
 
         upRange.zPosition=4
@@ -291,6 +295,8 @@ class GameScene: SKScene {
                         enemy.maxHealth = enemy.maxHealth - turret.damage
                         if enemy.maxHealth <= 0{
                             gold = gold + enemy.value
+                            goldLabel.text = "Gold : \(gold)"
+
                             enemy.removeFromParent()
                             //add enemy.score + player score
                             enemyList.removeAtIndex(index)
@@ -309,6 +315,11 @@ class GameScene: SKScene {
            if start == true && enemyList[currentEnemy].name == "enemy9"{
             
             start = false
+            enemyList.removeAll()
+            enemyInt = 0
+            currentEnemy = 0
+
+            
             }
         if updatesSinceLastSpawn >= 25 && start == true {
             
@@ -364,6 +375,7 @@ class GameScene: SKScene {
         inputHelper.hasTapped = true
         print(nodeAtPoint(inputHelper.touchLocation))
         if (nodeAtPoint(inputHelper.touchLocation).name == "startWave"){
+            
             start = true
             for(var i = 0; i<10;i++){
                 var enemySpawn = BulletBob(position: CGPointMake((frame.midX*0.875),frame.maxY))
@@ -378,6 +390,7 @@ class GameScene: SKScene {
                 enemySpawn.hidden = true
                 
             }
+            
         
         }
         if nodeAtPoint(inputHelper.touchLocation).name == "mainTurret"{
@@ -406,12 +419,15 @@ class GameScene: SKScene {
           
         }
         else{
-            upAttack.alpha = 0.5
-            upSpeed.alpha = 0.5
-            upRange.alpha = 0.5
+          //  if nodeAtPoint(inputHelper.touchLocation).name != "mainTurret" {
+                
+   //         selectedNode = SKNode()
+            
+       //     }
         }
     
-       if nodeAtPoint(inputHelper.touchLocation).name == "upAttack" && selected == true && gold >= 10{
+        if nodeAtPoint(inputHelper.touchLocation).name == "upAttack" && selected == true && gold >= 10{
+        if selectedNode.name != nil {
         
         let t = selectedNode.name
         let substring = t!.substringWithRange(Range<String.Index>(start:(t?.startIndex.advancedBy(7))!,end: (t?.endIndex)!))
@@ -419,11 +435,62 @@ class GameScene: SKScene {
         turretNames[Int(substring)!-1].damage = turretNames[Int(substring)!-1].damage + 5
         print(turretNames[Int(substring)!-1].damage)
         gold = gold - 10
+        goldLabel.text = "Gold : \(gold)"
+
         //print(substring)
         //print(selectedNode)
         //Turret(selectedNode.damage) = 20
 //
+        selectedNode = SKNode()
+        upAttack.alpha = 0.5
+        upSpeed.alpha = 0.5
+        upRange.alpha = 0.5
         }
+        }
+        if nodeAtPoint(inputHelper.touchLocation).name == "upSpeed" && selected == true && gold >= 10{
+            if selectedNode.name != nil {
+                
+                let t = selectedNode.name
+                let substring = t!.substringWithRange(Range<String.Index>(start:(t?.startIndex.advancedBy(7))!,end: (t?.endIndex)!))
+                print(turretNames[Int(substring)!-1].fireRate)
+                turretNames[Int(substring)!-1].fireRate = turretNames[Int(substring)!-1].fireRate - 3
+                print(turretNames[Int(substring)!-1].fireRate)
+                gold = gold - 10
+                goldLabel.text = "Gold : \(gold)"
+
+                //print(substring)
+                //print(selectedNode)
+                //Turret(selectedNode.damage) = 20
+                //
+                selectedNode = SKNode()
+                upAttack.alpha = 0.5
+                upSpeed.alpha = 0.5
+                upRange.alpha = 0.5
+            }
+        }
+        if nodeAtPoint(inputHelper.touchLocation).name == "upRange" && selected == true && gold >= 10{
+            if selectedNode.name != nil {
+                
+                let t = selectedNode.name
+                let substring = t!.substringWithRange(Range<String.Index>(start:(t?.startIndex.advancedBy(7))!,end: (t?.endIndex)!))
+                print(turretNames[Int(substring)!-1].range)
+                turretNames[Int(substring)!-1].range = turretNames[Int(substring)!-1].range + CGFloat(10)
+                print(turretNames[Int(substring)!-1].range)
+                gold = gold - 10
+                
+                goldLabel.text = "Gold : \(gold)"
+
+                //print(substring)
+                //print(selectedNode)
+                //Turret(selectedNode.damage) = 20
+                //
+                selectedNode = SKNode()
+                upAttack.alpha = 0.5
+                upSpeed.alpha = 0.5
+                upRange.alpha = 0.5
+            }
+        }
+
         
      
 
@@ -460,6 +527,8 @@ class GameScene: SKScene {
                 node.hasTurret = true
                 turretCounter += 1
                 gold = gold - 50
+                goldLabel.text = "Gold : \(gold)"
+
             }
             else{
                 
