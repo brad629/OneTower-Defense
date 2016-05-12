@@ -35,6 +35,8 @@ class GameScene: SKScene {
     let titleSplash = SKSpriteNode(imageNamed:"spr_tower")
     let demoSplash = SKSpriteNode(imageNamed:"spr_demo")
     var enemyInt = 0
+    var updatesSinceLastSpawn = 0
+    var currentEnemy = 0
 
 
     
@@ -262,15 +264,17 @@ class GameScene: SKScene {
             }
             
         }
+            
+        if updatesSinceLastSpawn >= 100 {
+            enemyList[currentEnemy].hidden = false
+            updatesSinceLastSpawn = 0
+            currentEnemy = currentEnemy + 1
+            enemyInt = enemyInt + 1
+        }else{
+            updatesSinceLastSpawn = updatesSinceLastSpawn + 1
+        }
+            
         for (index, enemy) in enemyList.enumerate(){
-            if enemyInt == 0 {
-                spawnTime = currentTime
-                enemyInt = 1
-            enemy.hidden = false
-            }
-            if currentTime - spawnTime >= 3{
-                enemy.hidden = false
-            }
             if(enemy.hidden == false){
                 enemy.updateDelta(currentTime)
                 // if enemy intersects base - 1 life
