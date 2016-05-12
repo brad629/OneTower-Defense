@@ -13,10 +13,10 @@ class GameScene: SKScene {
     var turretCounter = 1
     var selectedNode = SKNode()
     var inputHelper = InputHelper()
+    var enemyList:[Enemy] = []
     var turretNames:[Turret] = []
     var wallNodes: [Wall] = []
-    var bobby: BulletBob?
-    var enemyList: [Enemy] = []
+   // var bobby: BulletBob?
     var enemyTypes: [Enemy] = []
     let base = SKSpriteNode(imageNamed: "spr_treasure")
     var health = 5
@@ -29,6 +29,7 @@ class GameScene: SKScene {
     let bradSplash = SKSpriteNode(imageNamed:"spr_brad")
     let titleSplash = SKSpriteNode(imageNamed:"spr_tower")
     let demoSplash = SKSpriteNode(imageNamed:"spr_demo")
+    var enemyInt = 0
 
 
     
@@ -43,13 +44,21 @@ class GameScene: SKScene {
         background.position = CGPointMake(frame.midX,frame.midY)
         self.addChild(background)
         
-        let bobby = BulletBob(position:CGPointMake((frame.midX*0.875),(frame.midY + 1/2*frame.midY + 1/4*frame.midY )))
-        bobby.xScale = 0.5
-        bobby.yScale = 0.5
-        bobby.zPosition = 3
-        
-        self.addChild(bobby)
-        enemyList.append(bobby)
+        let startButton = SKSpriteNode(imageNamed:"startWave")
+        startButton.xScale = 1
+        startButton.yScale = 1
+        startButton.zPosition=4
+        startButton.name = "startWave"
+        startButton.position = CGPointMake(frame.midX*0.75,base.position.y+(1/16)*frame.maxY)
+        self.addChild(startButton)
+
+//        let bobby = BulletBob(position:CGPointMake((frame.midX*0.875),(frame.midY + 1/2*frame.midY + 1/4*frame.midY )))
+//        bobby.xScale = 0.5
+//        bobby.yScale = 0.5
+//        bobby.zPosition = 3
+//        
+//        self.addChild(bobby)
+//        enemyList.append(bobby)
         
         let turret = Turret(position:CGPointMake((frame.maxX*0.65),(frame.midY + 1/2*frame.midY + 1/4*frame.midY )))
         turret.xScale = 0.5
@@ -219,7 +228,7 @@ class GameScene: SKScene {
 // loop through turret list and enemy list to see if any are in range of the turrets
         for turret in turretNames{
             for (index, enemy) in enemyList.enumerate(){
-                print("farts")
+               // print("farts")
                 let rise = abs(turret.position.y - enemy.position.y)
                 let run = abs(turret.position.x - enemy.position.x)
                 let distance = sqrt((rise*rise)+(run*run))
@@ -236,11 +245,9 @@ class GameScene: SKScene {
                             enemy.removeFromParent()
                             //add enemy.score + player score
                             enemyList.removeAtIndex(index)
+                            enemyInt = enemyInt - 1
                             //demo stuff to see functionality
-                           //enemy.position = CGPointMake((frame.midX*0.875),(frame.midY + 1/2*frame.midY + 1/4*frame.midY ))
-                          //  enemy.maxHealth = 100
-                            //addChild(enemy)
-                          //  enemyList.append(enemy)
+                          
                         }
                         break
 
@@ -250,21 +257,30 @@ class GameScene: SKScene {
             
         }
         for (index, enemy) in enemyList.enumerate(){
+            if enemyInt == 0 {
+                enemyInt = 1
+            enemy.hidden = false
+            }
             
-            enemy.updateDelta(currentTime)
-            // if enemy intersects base - 1 life
-            if base.intersectsNode(enemy){
-                enemyList.removeAtIndex(index)
-                enemy.removeFromParent()
-                health = health - 1
-                lifeLabel.text = String(health)  + "/5"
-                if health <= 0 {
-                    gameOver.text = "GAME OVER"
-                    gameOver.fontSize = 200
-                    gameOver.fontColor = UIColor.blackColor()
-                    gameOver.position = base.position
-                    gameOver.zPosition = 10
-                    self.addChild(gameOver)
+            if(enemy.hidden == false){
+                enemy.updateDelta(currentTime)
+                // if enemy intersects base - 1 life
+                if base.intersectsNode(enemy){
+                    enemyInt = enemyInt - 1
+                    enemyList.removeAtIndex(index)
+                    enemy.removeFromParent()
+                    health = health - 1
+                    lifeLabel.text = String(health)  + "/5"
+                    if health <= 0 {
+                        gameOver.text = "GAME OVER"
+                        gameOver.fontSize = 200
+                        gameOver.fontColor = UIColor.blackColor()
+                        gameOver.position = base.position
+                        gameOver.zPosition = 10
+                        self.addChild(gameOver)
+            }
+                    
+           
                 }
             }
         }
@@ -283,6 +299,18 @@ class GameScene: SKScene {
         inputHelper.nrTouches += touches.count
         inputHelper.hasTapped = true
         print(nodeAtPoint(inputHelper.touchLocation))
+        if (nodeAtPoint(inputHelper.touchLocation).name == "startWave"){
+            for(var i = 0; i<10;i++){
+                var enemySpawn = BulletBob(position: CGPointMake((frame.midX*0.875),frame.maxY))
+                enemySpawn.name = "enemy"+String(i)
+                enemyList.append(enemySpawn)
+                addChild(enemySpawn)
+                enemySpawn.hidden = true
+                print("farts /(i)")
+                
+            }
+        
+        }
         if nodeAtPoint(inputHelper.touchLocation).name == "turret"{
             
             selectedNode = nodeAtPoint(inputHelper.touchLocation)
