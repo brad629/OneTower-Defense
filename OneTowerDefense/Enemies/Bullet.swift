@@ -10,7 +10,7 @@ import SpriteKit
 
 class Bullet : SKSpriteNode {
     var target : Enemy
-    var timeToLive = 50
+    var timeToLive = 5
     var damage : Double
     var slow : Int
     var snare : Bool

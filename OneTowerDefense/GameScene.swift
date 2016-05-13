@@ -397,11 +397,14 @@ class GameScene: SKScene {
         }
         }
         for (index, bullet) in bulletList.enumerate(){
-            bullet.updateDelta(<#T##delta: NSTimeInterval##NSTimeInterval#>)
+            bullet.updateDelta(currentTime)
             bullet.timeToLive -= 1
             if bullet.timeToLive <= 0{
                 bullet.removeFromParent()
+                print(index)
+                print(bulletList)
                 bulletList.removeAtIndex(index)
+                break
             }
         }
     }
