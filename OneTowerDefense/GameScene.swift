@@ -20,6 +20,7 @@ class GameScene: SKScene {
     var selectedUpgrade = SKNode()
     var inputHelper = InputHelper()
     var enemyList:[Enemy] = []
+    var bulletList:[Bullet] = []
     var turretNames:[Turret] = []
     var wallNodes: [Wall] = []
    // var bobby: BulletBob?
@@ -295,6 +296,7 @@ class GameScene: SKScene {
               //  print(distance)
                 if distance < turret.range{
                     if let bullet = turret.prepareToShoot(enemy) {
+                        bulletList.append(bullet)
                         //print("pew pew pew")
                         bullet.xScale = 0.25
                         bullet.yScale = 0.25
@@ -389,16 +391,20 @@ class GameScene: SKScene {
 //                        self.addChild(resetGame)
                         start = false
                         
-            }
-                   
-                    
-           
+                    }
                 }
             }
         }
-        //bobby!.updateDelta(delta)
+        }
+        for (index, bullet) in bulletList.enumerate(){
+            bullet.updateDelta(<#T##delta: NSTimeInterval##NSTimeInterval#>)
+            bullet.timeToLive -= 1
+            if bullet.timeToLive <= 0{
+                bullet.removeFromParent()
+                bulletList.removeAtIndex(index)
+            }
+        }
     }
-}
     override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
         
         splash.hidden = true
@@ -420,7 +426,7 @@ class GameScene: SKScene {
             start = true
             if wave == 1{
             for(var i = 0; i<10;i++){
-                var enemySpawn = BulletBob(position: CGPointMake((frame.midX*0.875),frame.maxY))
+                let enemySpawn = BulletBob(position: CGPointMake((frame.midX*0.875),frame.maxY))
                 enemySpawn.name = "enemy"+String(i)
                 //print(enemySpawn.name)
                 enemyList.append(enemySpawn)
@@ -434,7 +440,7 @@ class GameScene: SKScene {
             }
             if wave == 2{
                 for(var i = 0; i<10;i++){
-                    var enemySpawn = MetalMan(position: CGPointMake((frame.midX*0.875),frame.maxY))
+                    let enemySpawn = MetalMan(position: CGPointMake((frame.midX*0.875),frame.maxY))
                     enemySpawn.name = "enemy"+String(i)
                     //print(enemySpawn.name)
                     enemyList.append(enemySpawn)
@@ -448,7 +454,7 @@ class GameScene: SKScene {
             }
             if wave == 3{
                 for(var i = 0; i<10;i++){
-                    var enemySpawn = Isis(position: CGPointMake((frame.midX*0.875),frame.maxY))
+                    let enemySpawn = Isis(position: CGPointMake((frame.midX*0.875),frame.maxY))
                     enemySpawn.name = "enemy"+String(i)
                     //print(enemySpawn.name)
                     enemyList.append(enemySpawn)
@@ -462,7 +468,7 @@ class GameScene: SKScene {
             }
             if wave == 4{
                 for(var i = 0; i<10;i++){
-                    var enemySpawn = Turtle(position: CGPointMake((frame.midX*0.875),frame.maxY))
+                    let enemySpawn = Turtle(position: CGPointMake((frame.midX*0.875),frame.maxY))
                     enemySpawn.name = "enemy"+String(i)
                     //print(enemySpawn.name)
                     enemyList.append(enemySpawn)
