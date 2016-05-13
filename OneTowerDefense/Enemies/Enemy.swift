@@ -14,7 +14,7 @@ class Enemy : SKSpriteNode {
     var enragePercent = 0.25
     var enraged = false
     var mSpeed = CGFloat(15)
-    var value = 1
+    var value = 5
 
     //var resistance = nil
     
