@@ -16,7 +16,7 @@ class Turtle: Enemy {
         super.init(position: position, texture: normTexture)
         self.value = 10
         self.enragePercent = 0.10
-        self.maxHealth = 600
+        self.maxHealth = 6000
         self.mSpeed = 2
         self.currentHealth = maxHealth
     }

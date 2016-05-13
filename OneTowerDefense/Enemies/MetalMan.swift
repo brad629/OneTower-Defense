@@ -14,7 +14,7 @@ class MetalMan : Enemy {
     
     init (position: CGPoint){
         super.init(position: position, texture: normTexture)
-        self.value = 3
+        self.value = 10
         self.enragePercent = 0.30
         self.maxHealth = 300
         self.mSpeed = 5

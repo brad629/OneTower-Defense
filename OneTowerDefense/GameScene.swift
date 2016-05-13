@@ -10,7 +10,7 @@ import SpriteKit
 import AVFoundation
 
 class GameScene: SKScene {
-    
+    var wave = 1
     var audioPlayer = AVAudioPlayer()
     var turretSound = NSURL(fileURLWithPath: NSBundle.mainBundle().pathForResource("turretSound" , ofType: "wav")!)
     var spawnTime:NSTimeInterval = 0
@@ -44,6 +44,8 @@ class GameScene: SKScene {
     let upSpeed = SKSpriteNode(imageNamed:"upSpeed")
     let upRange = SKSpriteNode(imageNamed:"upRange")
     let upAttack = SKSpriteNode(imageNamed:"upAttack")
+    let resetGame = SKSpriteNode(imageNamed:"reset")
+
     var gold = 100
 
     
@@ -238,16 +240,22 @@ class GameScene: SKScene {
         lifeLabel.fontColor = UIColor.blackColor()
         lifeLabel.position = base.position
         
-        lifeLabel.zPosition=5
+        lifeLabel.zPosition=4
         self.addChild(lifeLabel)
-        
+        let goldnode = SKSpriteNode(imageNamed: "gold")
+        goldnode.xScale = 0.5
+        goldnode.zPosition = 3
+        goldnode.yScale = 0.25
+        goldnode.position = startButton.position
+        goldnode.position.y += 35
+        self.addChild(goldnode)
         goldLabel.text = "Gold : \(gold)"
         goldLabel.fontSize = 20
+        goldLabel.zPosition = 4
         goldLabel.fontColor = UIColor.blackColor()
-        goldLabel.position = upAttack.position
-        goldLabel.position.y += 20
+        goldLabel.position = startButton.position
+        goldLabel.position.y += 30
         
-        goldLabel.zPosition=5
         self.addChild(goldLabel)
         
         splash.xScale = 1
@@ -324,6 +332,7 @@ class GameScene: SKScene {
            if start == true && enemyList[currentEnemy].name == "enemy9"{
             
             start = false
+            wave = wave + 1
 //            enemyList.removeAll()
 //            enemyInt = 0
 //            currentEnemy = 0
@@ -365,9 +374,21 @@ class GameScene: SKScene {
                         gameOver.text = "GAME OVER"
                         gameOver.fontSize = 200
                         gameOver.fontColor = UIColor.blackColor()
-                        gameOver.position = base.position
+                        gameOver.position.x = frame.midX
+                        gameOver.position.y = frame.midY
                         gameOver.zPosition = 10
+                        gameOver.xScale = 0.25
+                        gameOver.yScale = 0.5
+                        enemyList.removeAll()
                         self.addChild(gameOver)
+
+//                        resetGame.position = gameOver.position
+//                        resetGame.name = "reset"
+//                        resetGame.zPosition = 10
+//                        resetGame.position.y -= 20
+//                        self.addChild(resetGame)
+                        start = false
+                        
             }
                    
                     
@@ -379,6 +400,7 @@ class GameScene: SKScene {
     }
 }
     override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
+        
         splash.hidden = true
         demoSplash.hidden = true
         bradSplash.hidden = true
@@ -389,11 +411,14 @@ class GameScene: SKScene {
         inputHelper.touchLocation = touch.locationInNode(self)
         inputHelper.nrTouches += touches.count
         inputHelper.hasTapped = true
-        print(nodeAtPoint(inputHelper.touchLocation))
+//        if nodeAtPoint(inputHelper.touchLocation).name == "reset"{
+//            execve(didMoveToView(SKView))
+//        }
+       // print(nodeAtPoint(inputHelper.touchLocation))
         if (nodeAtPoint(inputHelper.touchLocation).name == "startWave" && start == false){
             enemyList.removeAll()
             start = true
-            
+            if wave == 1{
             for(var i = 0; i<10;i++){
                 var enemySpawn = BulletBob(position: CGPointMake((frame.midX*0.875),frame.maxY))
                 enemySpawn.name = "enemy"+String(i)
@@ -405,8 +430,52 @@ class GameScene: SKScene {
                 
                 addChild(enemySpawn)
                 enemySpawn.hidden = true
-                
+                }
             }
+            if wave == 2{
+                for(var i = 0; i<10;i++){
+                    var enemySpawn = MetalMan(position: CGPointMake((frame.midX*0.875),frame.maxY))
+                    enemySpawn.name = "enemy"+String(i)
+                    //print(enemySpawn.name)
+                    enemyList.append(enemySpawn)
+                    enemySpawn.zPosition = 3
+                    enemySpawn.xScale = 0.5
+                    enemySpawn.yScale = 0.5
+                    
+                    addChild(enemySpawn)
+                    enemySpawn.hidden = true
+                }
+            }
+            if wave == 3{
+                for(var i = 0; i<10;i++){
+                    var enemySpawn = Isis(position: CGPointMake((frame.midX*0.875),frame.maxY))
+                    enemySpawn.name = "enemy"+String(i)
+                    //print(enemySpawn.name)
+                    enemyList.append(enemySpawn)
+                    enemySpawn.zPosition = 3
+                    enemySpawn.xScale = 0.5
+                    enemySpawn.yScale = 0.5
+                    
+                    addChild(enemySpawn)
+                    enemySpawn.hidden = true
+                }
+            }
+            if wave == 4{
+                for(var i = 0; i<10;i++){
+                    var enemySpawn = Turtle(position: CGPointMake((frame.midX*0.875),frame.maxY))
+                    enemySpawn.name = "enemy"+String(i)
+                    //print(enemySpawn.name)
+                    enemyList.append(enemySpawn)
+                    enemySpawn.zPosition = 3
+                    enemySpawn.xScale = 0.5
+                    enemySpawn.yScale = 0.5
+                    
+                    addChild(enemySpawn)
+                    enemySpawn.hidden = true
+                }
+            }
+
+            
             
         
         }
@@ -430,7 +499,6 @@ class GameScene: SKScene {
 //            let substring = s![r!]
 //            print(substring)
 //            if String(substring) == "turret "{
-                print("farts")
             
             
           
@@ -448,9 +516,9 @@ class GameScene: SKScene {
         
         let t = selectedNode.name
         let substring = t!.substringWithRange(Range<String.Index>(start:(t?.startIndex.advancedBy(7))!,end: (t?.endIndex)!))
-        print(turretNames[Int(substring)!-1].damage)
+        print("Damage was " + String(turretNames[Int(substring)!-1].damage))
         turretNames[Int(substring)!-1].damage = turretNames[Int(substring)!-1].damage + 5
-        print(turretNames[Int(substring)!-1].damage)
+        print("Damage is now " + String(turretNames[Int(substring)!-1].damage))
         gold = gold - 10
         goldLabel.text = "Gold : \(gold)"
 
@@ -469,9 +537,9 @@ class GameScene: SKScene {
                 
                 let t = selectedNode.name
                 let substring = t!.substringWithRange(Range<String.Index>(start:(t?.startIndex.advancedBy(7))!,end: (t?.endIndex)!))
-                print(turretNames[Int(substring)!-1].fireRate)
+                print("fire rate was  " + String(turretNames[Int(substring)!-1].fireRate))
                 turretNames[Int(substring)!-1].fireRate = turretNames[Int(substring)!-1].fireRate - 3
-                print(turretNames[Int(substring)!-1].fireRate)
+                print("fire rate is now " + String(turretNames[Int(substring)!-1].fireRate))
                 gold = gold - 10
                 goldLabel.text = "Gold : \(gold)"
 
@@ -490,9 +558,9 @@ class GameScene: SKScene {
                 
                 let t = selectedNode.name
                 let substring = t!.substringWithRange(Range<String.Index>(start:(t?.startIndex.advancedBy(7))!,end: (t?.endIndex)!))
-                print(turretNames[Int(substring)!-1].range)
+                print("fire range was  " + String(turretNames[Int(substring)!-1].range))
                 turretNames[Int(substring)!-1].range = turretNames[Int(substring)!-1].range + CGFloat(10)
-                print(turretNames[Int(substring)!-1].range)
+                print("fire range is now  " + String(turretNames[Int(substring)!-1].range))
                 gold = gold - 10
                 
                 goldLabel.text = "Gold : \(gold)"
